@@ -1,0 +1,31 @@
+<div class="p-v-sm m-t pos-rlt clear">
+    <h1 class="no-margin">
+        <div class="pull-left title-ico"><i class="ui-icon fa fa-bullhorn"></i></div>
+        <div class="pull-left title-text">Tracking Code</div>
+        <a sref="ads.campaign.create.create_campaign"></a>
+    </h1>
+</div>
+
+<div class="m-t">
+
+	<div class="row">
+		<div class="col-md-4">
+			<form role="form">
+				<div class="form-group">
+					<label for="name">Name</label>
+					<input type="text" class="form-control" id="name" placeholder="Enter name" ng-model="site.name">
+				</div>
+				<div class="form-group">
+					<label for="url">Site URL</label>
+					<input type="url" class="form-control" id="url" placeholder="www.everstring.com" ng-model="site.url">
+				</div>
+				<button type="submit" class="btn btn-default m-b" ng-click="createSite(site, $event)">Get</button>
+			</form>
+
+			<div class="code-snippet" ng-if="snippet">
+				<p>Tracking Code(Paste inside `&lt;body&gt;` tag)</p>
+				<pre>{{snippet}}</pre>
+			</div>
+		</div>
+	</div>
+</div>

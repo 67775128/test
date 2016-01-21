@@ -1,0 +1,335 @@
+<div class="p-v-sm m-t pos-rlt clear">
+    <h1 class="no-margin">
+        <div class="pull-left title-ico"><i class="ui-icon btr bt-magic"></i></div>
+        <div class="pull-left title-text">Audience Editor</div>
+    </h1>
+</div>
+<div id="audience-body" class="m-t-md">
+    <div class="panel panel-default panel-grey">
+        <div>
+            <form class="form-horizontal">
+                <fieldset>
+                    <div class="col-sm-5">
+                        <div class="form-group m-t-md real-edit">
+                            <label class="pull-left control-label p-l-lg">Audience Name</label>
+
+                            <div class="col-sm-6 p-r-xs" ng-if="!audience.canEdit">
+                                <ui-select ng-model="audienceList.selected" theme="bootstrap"
+                                           on-select="audienceList.changeSelected($item, $model)">
+                                    <ui-select-match placeholder="Select..."
+                                                     title='{{$select.selected.name?$select.selected.name:"(Blank)"}}'>
+                                        {{$select.selected.name?$select.selected.name:"(Blank)"}}
+                                    </ui-select-match>
+                                    <ui-select-choices group-by="'group'"
+                                                       repeat="item in audienceList.list ">
+                                        <span ng-bind-html="item.name?item.name:'(Blank)' | highlight: $select.search"
+                                              title="{{item.name?item.name:'(Blank)' | highlight: $select.search}}"
+                                                ></span>
+                                        <!-- <small ng-bind-html="item.value | highlight: $select.search"></small>-->
+                                    </ui-select-choices>
+                                </ui-select>
+
+
+                            </div>
+                            <div class="col-sm-6 m-r-xs" ng-if="audience.canEdit">
+                                <input type="text" class="border-grey" ng-model="audienceList.selected.name"/>
+
+                            </div>
+                            <button ng-if="!audience.canEdit" class="btn-no-border m-t-xs btn-edit"
+                                    ng-click="audience.canEdit=!audience.canEdit">
+                                <i class="ti-pencil"></i></button>
+
+                            <button ng-if="audience.canEdit" class="btn-no-border m-t-xs"
+                                    ng-click="audience.canEdit=false">
+                                <i class="ti-back-right"></i></button>
+                            <button ng-if="audience.canEdit" class="btn-no-border m-t-xs"
+                                    ng-click="audienceList.saveAudience(false,true)">
+                                <i class="ti-save"></i></button>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group text-center m-t-md">
+                            <div class="col-sm-6">
+                                <div class="count-title">Companies</div>
+                                <div class="section">{{filteredCompanyCount | number:0}}</div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="count-title">Contacts</div>
+                                <div class="section">{{filteredContactCount | number:0}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group pull-right m-t-md  p-h">
+                            <ul class="btn-groups">
+                                <li class="">
+                                    <a href class="clear btn-big-grey" ng-click="audienceList.addAudience(true)">
+                                        <i class="fa fa-plus-circle"></i>
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href class="clear btn-big-grey" bs-dropdown="dropdownAudience"
+                                       data-placement="bottom-right" data-animation="am-collapse">
+                                        <i class="fa fa-ellipsis-h"></i>
+                                    </a>
+                                </li>
+                            </ul>
+
+
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row relative">
+    <loading ng-show="loadingSelected"></loading>
+    <div class="col-sm-6">
+        <div class="panel panel-default bg-white" style="height:580px;">
+            <div class="chart-title">
+                <div class="chart-desc p-lg">Use the slider
+                    <div class="slider-pointer-pic"></div>
+                    to specify your threshold for audience quality.
+                </div>
+            </div>
+
+            <div class="section text-center" style="margin-bottom: 65px;">
+                <div class="aligned-font"> {{filteredCompanyCount | number:0}} companies selected
+                </div>
+                <div class="aligned-font"> ({{filteredCompanyCount/allCompanyCount *100 | number:1}}% of companies)
+                </div>
+            </div>
+
+            <div class="p-h-lg  m-t-lg" id="chart-demand-gen" style="height:220px;">
+            </div>
+
+            <div class="p-h-lg">
+                <div class="p-h-xs">
+                    <div class="es-slider-div">
+                        <input ng-model="audience.demandGen.factor" type="text" id="mySlider1" slider
+                               options="audience.demandGen.sliderOptions"
+                               style="display:none;"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <div class="chart-desc">Score
+                </div>
+            </div>
+
+            <div class="text-center p-v">
+                <div class="text-center"><span class="p-h-sm"></span><span class="p-h-sm"><i
+                        class="fa fa-circle grade-a"></i>A</span>
+                    <span class="p-h-sm"><i class="fa fa-circle grade-b"></i>B</span>
+                    <span class="p-h-sm"><i class="fa fa-circle grade-c"></i>C</span>
+                    <span class="p-h-sm"><i class="fa fa-circle grade-d"></i>D</span>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="panel panel-default" style="height:580px;">
+            <ul class="nav nav-tabs sub-nav-tabs relative" ui-nav="">
+                <li ng-class="activeTab=='company'?'active':''" style="width: auto;">
+                    <a ng-click="activeTab='company';switchToCompany();">Company</a>
+                </li>
+                <li ng-class="activeTab=='contact'?'active':''" style="width: auto;">
+                    <a ng-click="activeTab='contact'">Contact</a>
+                </li>
+
+                <div style="position: absolute; right:9px; top:13px;">
+                    <label class="ui-checks js-checkbox">
+                        <input type="checkbox" value="" ng-model="audienceList.selected.company.hasContact"
+                               ng-click="audienceList.saveAudience(true)">
+                        <i></i>
+                        Has Contacts
+                    </label>
+                </div>
+
+            </ul>
+
+
+            <div class="tab-content">
+                <div ng-class="activeTab=='company'?'active':'hide'">
+
+                    <div class="title-small" style="clear:both;">
+                        <div class="pull-left p-v">Top 5 industries in your audience</div>
+                        <div class="pull-right  p-v">
+                            <button class="btn-no-border" ng-click="showAside('industry')"><i class="ti-pencil"></i>
+                                <span class="text-link">({{checkedIndustries.length || 0}})</span></button>
+                        </div>
+                    </div>
+
+                    <div class="overview-panel flexbox" style="clear:both;">
+                        <div class="indicator-box item flex m-r p-v-sm" ng-repeat="item in checkedIndustries"
+                             ng-if="$index <5">
+                            <p class="name" bs-tooltip="tooltip" title="{{item.name}}">{{item.name || '(Blank)'}}</p>
+
+                            <p class="num">{{item.num | number:0}}</p>
+
+                            <p class="text-link" ng-if="item.liftRateMultiple">{{item.liftRateMultiple | number:1}}x</p>
+                        </div>
+
+
+                    </div>
+
+                    <hr class="hr-border-grey"/>
+
+                    <div class="title-small m-b-sm" style="clear:both;">
+                        <div class="pull-left p-b">Top 5 locations in your audience</div>
+                        <div class="pull-right p-b">
+                            <button class="btn-no-border" ng-click="showAside('location')"><i class="ti-pencil"></i>
+                                <span class="text-link">({{checkedLocations.length || 0}})</span></button>
+                        </div>
+                    </div>
+
+                    <div class="overview-panel flexbox" style="clear:both;">
+                        <div class="indicator-box item flex m-r p-v-sm" ng-repeat="item in checkedLocations"
+                             ng-if="$index <5">
+                            <p class="name" bs-tooltip="tooltip" title="{{item.name}}">{{item.name || '(Blank)'}}</p>
+
+                            <p class="num">{{item.num | number:0}}</p>
+
+                            <p class="text-link" ng-if="item.liftRateMultiple">{{item.liftRateMultiple | number:1}}x</p>
+                        </div>
+
+                    </div>
+
+                    <hr class="hr-border-grey"/>
+
+                    <div style="height: 150px;">
+                        <div class="pull-left" style="width: 49%; ">
+                            <div class="title-small">Revenue</div>
+                            <div class="" id="chart-revenue" style="height:80px;">
+                            </div>
+
+                            <div class="">
+                                <div class="p-h-xs">
+                                    <div class="es-slider-div">
+                                        <input ng-model="audience.company.revenue.factor" type="text"
+                                               id="slider-revenue" slider
+                                               options="audience.company.revenue.sliderOptions"
+                                               style="display:none;"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pull-right" style="width: 49%;">
+                            <div class="title-small">Company Size</div>
+                            <div class="" id="chart-company-size" style="height:80px;">
+                            </div>
+
+                            <div class="">
+                                <div class="p-h-xs">
+                                    <div class="es-slider-div">
+                                        <input ng-model="audience.company.companySize.factor" type="text"
+                                               id="slider-company-size" slider
+                                               options="audience.company.companySize.sliderOptions"
+                                               style="display:none;"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="pull-right ">
+                        <button type="button" class="target-btn inline" ng-click="activeTab='contact'">Next</button>
+                    </div>
+
+                </div>
+
+
+                <!--Contact-->
+                <div ng-class="activeTab=='contact'?'active':'hide'">
+                    <div class="title-small" style="clear:both;">
+                        <div class="pull-left p-v">Titles (5 most relevant)</div>
+                        <div class="pull-right  p-v">
+                            <button class="btn-no-border" ng-click="showAside('title')"><i class="ti-pencil"></i>
+                                <span class="text-link">({{audienceList.selected.contact.title.included.length +
+                        audienceList.selected.contact.title.excluded.length || 0}})</span></button>
+                        </div>
+                    </div>
+
+                    <div class="overview-panel flexbox" style="clear:both;">
+                        <div class="indicator-box item flex m-r p-v-sm"
+                             ng-repeat="value in audienceList.selected.contact.title.included" ng-if="$index <5">
+                            <p class="name" bs-tooltip="tooltip" title="{{value}}">{{ value }}</p>
+
+                            <p class="num">{{ audience.contact.title.nums[value] || 0}}</p>
+
+                        </div>
+
+                    </div>
+
+                    <hr class="hr-border-grey"/>
+
+                    <div class="title-small" style="clear:both;">
+                        <div class="pull-left p-v">Seniority</div>
+                        <div class="pull-right  p-v">
+                            <button class="btn-no-border" ng-click="showAside('level')"><i class="ti-pencil"></i>
+                                <span class="text-link">({{checkedSeniorities.length || 0}})</span></button>
+                        </div>
+                    </div>
+
+                    <div class="overview-panel flexbox" style="clear:both;">
+                        <div class="indicator-box item flex m-r p-v-sm" ng-repeat="item in checkedSeniorities"
+                             ng-if="$index <5">
+                            <p class="name" bs-tooltip="tooltip" title="{{item.name}}">{{item.name || '(Blank)'}}</p>
+
+                            <p class="num">{{item.num | number:0}}</p>
+
+                        </div>
+
+                    </div>
+
+                    <hr class="hr-border-grey"/>
+
+                    <div class="title-small" style="clear:both;">
+                        <div class="pull-left p-v">Job Function (5 most relevant)</div>
+                        <div class="pull-right  p-v">
+                            <button class="btn-no-border" ng-click="showAside('function')"><i class="ti-pencil"></i>
+                                <span class="text-link">({{checkedJobFunctions.length  || 0}})</span></button>
+                        </div>
+                    </div>
+
+                    <div class="overview-panel flexbox" style="clear:both;">
+                        <div class="indicator-box item flex m-r p-v-sm" ng-repeat="item in checkedJobFunctions"
+                             ng-if="$index <5">
+                            <p class="name" bs-tooltip="tooltip" title="{{item.name}}">{{item.name || '(Blank)'}}</p>
+
+                            <p class="num">{{item.num | number:0}}</p>
+                        </div>
+
+                    </div>
+
+                    <hr class="hr-border-grey"/>
+
+                    <div>
+                        <div class="pull-right">
+                            <button class="btn-dropdown" bs-dropdown="dropdownExport"
+                                    data-placement="bottom-right" data-animation="am-collapse">Export
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

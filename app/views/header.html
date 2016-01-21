@@ -1,0 +1,50 @@
+<!-- navbar header -->
+<div class="navbar-header">
+
+    <!-- brand -->
+    <a class="navbar-brand text-lt">
+
+        <img src="images/logo.png" alt="EverString">
+
+    </a>
+    <!-- / brand -->
+</div>
+<!-- / navbar header -->
+
+<!-- navbar collapse -->
+<div class="navbar-collapse " ng-class="{'show animated fadeIn' : app.navbarCollapse}" ng-controller="HeaderCtrl">
+
+
+
+    <!-- nabar right -->
+    <ul class="nav navbar-nav navbar-right m-r-n">
+        <li ng-if="superUser"  class="user-dropdown">
+            <a ng-if="superUser.email" href class="clear no-padding-h nav-main-a" bs-dropdown="dropdownSuperUser"
+               data-placement="bottom-right" data-animation="am-collapse"  >
+
+                <span class="m-l-xs">{{superUser.email}}</span>
+                <i class="fa fa-angle-down"></i>
+            </a>
+
+        </li>
+        <li class="user-dropdown">
+            <a ng-if="userInfo.email" href class="clear no-padding-h nav-main-a" bs-dropdown="dropdown"
+               data-placement="bottom-right" data-animation="am-collapse"  >
+               <!-- <img src="images/user1.jpg" alt="..." style="width: 38px;height: 38px;border: 2px solid #eee;"
+                     class="img-circle">
+                <div class="user2circle pull-left">{{userInfo.email.substr(0,2)}}</div>-->
+                <span class="m-l-xs">{{userInfo.email}}</span>
+                <i class="fa fa-angle-down"></i>
+            </a>
+
+
+            <span ng-if="!userInfo.email"  class="clear no-padding-h nav-main-a" style="padding:7px 5px;">
+                Not Logged In
+            </span>
+        </li>
+    </ul>
+    <!-- / navbar right -->
+
+
+</div>
+<!-- / navbar collapse -->

@@ -1,0 +1,156 @@
+/*
+*/
+@brand-primary:           #055ec3;
+@brand-info:              #55A4FB;
+@brand-success:           #6eb21f;
+@brand-warning:           #FCD989;
+@brand-danger:            #F75845;
+@brand-inverse:           #a66bee;
+@brand-light:             #f1f2f3;
+@brand-dark:              #202a3a;
+@brand-black:             #282836;
+
+@brand-icon-size:   40px;
+
+@brand-success-bg:lighten(@brand-success, 44%);
+@brand-info-bg:lighten(@brand-info, 44%);
+@brand-danger-bg:#ffcccc;
+
+@body-bg:                 #f2f2f2;
+@text-default:            #000;
+@text-color:              #666;
+@text-muted:              lighten(@text-color, 20%);
+@text-dark:               #444;
+@text-link:               #055EC3;
+@text-disabled:           #dbdbdb;
+
+@icon-color:              #666;
+@icon-hover-color:        #999;
+
+@icon-muted:              #ddd;
+@icon-muted-hover:        #999;
+
+
+
+@font-family-sans-serif:  'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+@font-family-base:        @font-family-sans-serif;
+@font-family-header:      'Open Sans',"PT Sans", "Helvetica Neue", "HelveticaNeue-Light", Helvetica, Arial, sans-serif;
+
+@font-size-base:          14px;
+@font-size-xl:            ceil(@font-size-base * 1.71); // ~24px
+@font-size-lg:            ceil(@font-size-base * 1.23); // ~20px
+@font-size-md:            ceil(@font-size-base * 1.14); // ~16px
+@font-size-sm:            ceil(@font-size-base * 0.92); // ~13px
+@font-size-xs:            ceil(@font-size-base * 0.85); // ~12px
+@font-size-xxs:           ceil(@font-size-base * 0.71); // ~10px
+
+@link-color:              @brand-primary;
+@link-hover-color:        lighten(@brand-primary, 8%);
+@text-percent:            40%;
+@link-percent:            50%;
+@color-percent:           5%;
+@color-lt-percent:        3%;
+
+@border-radius-base:      0px;
+@border-color:		  	  #ddd;
+
+@line-height-base:        1.42857143; // 20/14
+@line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
+@icon-css-prefix:         i;
+
+// Buttons
+// -------------------------
+
+@btn-default-color:              @text-color;
+@btn-default-bg:                 #fff;
+@btn-default-border:             @border-color;
+@btn-border-radius:              @border-radius-base;
+@btn-hover:                      #55a4fb;
+@input-border:                   darken(@border-color, 5%);
+@input-border-focus:             darken(@border-color, 20%);
+@input-border-radius:            0;
+
+@panel-bg:                    	 #fff;
+@panel-border:                	 @border-color;
+@panel-heading-border:           lighten(@border-color, 5%);
+@panel-list-group-border:        lighten(@border-color, 5%);
+@panel-border-radius:         	 @border-radius-base;
+@panel-heading-sm:               36px;
+@panel-heading-xs:               32px;
+@panel-heading-bg:            	 lighten(@brand-light, 3%);
+@panel-footer-bg:             	 @panel-heading-bg;
+
+@dropdown-color:                 @text-color;
+@dropdown-active-color:          @text-color;
+@dropdown-hover:                 @brand-light;
+
+@nav-bg:                         #f5f4f4;
+@nav-hover-bg:                   #e6e6e6;
+@nav-color:                      @text-color;
+@nav-active-color:               darken(@nav-color, 5%);
+@nav-pills-active-color:         @text-color;
+@nav-pills-active:               darken(@brand-light, 5%);
+
+@badge-bg:                       darken(@brand-light, 25%);
+
+@list-group-item-border:         lighten(@border-color, 3%);
+@list-group-item-hover:          lighten(@brand-light, 3%);
+@list-group-item-focus:          darken(@brand-light, 3%);
+@list-group-select-color:        #dbeef9;
+@list-group-active-color:        @brand-info;
+
+@table-border-color:             lighten(@border-color, 4%);
+@table-striped-color:            lighten(@brand-light, 4.5%);
+
+@placeholder-color:              #ccc;
+
+@arrow-width:         			 8px;
+@arrow-outer-color:              rgba(0,0,0,0.1);
+
+@switch-width:                   32px;
+@switch-height:                  18px;
+@switch-md-width:                40px;
+@switch-md-height:               24px;
+@switch-lg-width:                50px;
+@switch-lg-height:               30px;
+
+@padding-xs:                 5px;
+@padding-sm:                 10px;
+@padding-md:                 15px;
+
+@ui-checks-size:                 14px;
+@ui-checks-md-size:              18px;
+@ui-checks-lg-size:              30px;
+@ui-checks-sign-size:            6px;
+@ui-checks-checked-border:       @input-border;
+@ui-checks-sign-color:           @brand-info;
+
+@header-height:                  52px;
+@footer-height:                  48px;
+@aside-width:                    273px;
+@aside-small-width:              50px;
+@aside-nav-height:               38px;
+@aside-nav-sub-height:           30px;
+@aside-nav-stacked-height:       30px;
+@aside-footer-height:            47px;
+@aside-top-height:               50px;
+
+// EverString color palette: https://everstring.atlassian.net/wiki/display/AD/Style+Guideline
+@app-palette-db: #00496f; // dark blue
+@app-palette-g:  #6eb21f; // green
+@app-palette-lb: #0098cd; // light blue
+@app-palette-br: #666; // brown
+@app-palette-red: #F75A45;
+
+@rate-a: #055ec3;
+@rate-b: #87befc;
+@rate-c: #ffb91d;
+@rate-d: #ff7803;
+
+@eng-rate-a: #2a6d94;
+@eng-rate-b: #5e92ae;
+@eng-rate-c: #e2ecf6;
+
+// Forms
+@form-height: 35px;

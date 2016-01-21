@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>EverString</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+    <!-- build:css styles/vendor.min.css -->
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css" type="text/css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap-additions/dist/bootstrap-additions.css" type="text/css"/>
+    <link rel="stylesheet" href="bower_components/angular-motion/dist/angular-motion.css" type="text/css"/>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" type="text/css"/>
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" type="text/css"/>
+    <link rel="stylesheet" href="bower_components/handsontable/dist/handsontable.full.css" type="text/css"/>
+    <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.min.css" type="text/css"/>
+    <link rel="stylesheet" href="bower_components/angular-awesome-slider/dist/css/angular-awesome-slider.min.css" type="text/css"/>
+    <link rel="stylesheet" href="bower_components/range2dslider/css/jquery.range2dslider.css" type="text/css"/>
+    <link href="scripts/lib/ion.rangeSlider/css/ion.rangeSlider.css" rel="stylesheet"/>
+    <link href="scripts/lib/ion.rangeSlider/css/ion.rangeSlider.skinModern.css" rel="stylesheet"/>
+
+
+    <!-- endbuild -->
+
+    <link rel="stylesheet" href="fonts/black-tie/css/black-tie.css">
+
+    <!-- build:css styles/app.min.css -->
+    <link rel="stylesheet" href="styles/dots.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/font.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/themify-icons.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/theme.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/app.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/app.common.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/app.demand.gen.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/app.auto.css" type="text/css"/>
+    <!-- endbuild -->
+
+</head>
+<body ng-app="app">
+    <div class="app" ui-view
+         ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-shrink':app.settings.asideShrink}"
+         ng-controller="MainCtrl">
+    </div>
+
+    <!-- build:js scripts/vendor.min.js -->
+    <!-- jQuery -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Angular -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <!-- Vendor -->
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+
+    <!-- angular-strap -->
+    <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
+    <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
+    <script src="scripts/lib/ui-bootstrap-custom-tpls-0.13.0.min.js"></script>
+
+    <!-- lazyload -->
+    <script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
+    <!-- translate -->
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+    <script src="bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+    <!-- loading-bar -->
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <!-- angular-easy-pie-chart -->
+    <script src="bower_components/jquery.easy-pie-chart/dist/angular.easypiechart.min.js"></script>
+
+    <!-- angular-truncate -->
+    <script src="bower_components/angular-truncate/src/truncate.js"></script>
+    <!-- highcharts -->
+    <script src="bower_components/highcharts/highcharts.js"></script>
+    <script src="bower_components/highcharts/highcharts-more.js"></script>
+    <script src="bower_components/highcharts/heatmap.js"></script>
+    <script src="scripts/lib/rounded-corners.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
+    <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+    <!-- chroma -->
+    <script src="scripts/lib/chroma.min.js"></script>
+    <!-- zeroclipboard -->
+    <script src="bower_components/zeroclipboard/dist/ZeroClipboard.min.js"></script>
+    <script src="bower_components/lodash/lodash.min.js"></script>
+    <!-- <script src="bower_components/handsontable/dist/handsontable.full.js "></script> -->
+    <script src="bower_components/angular-ui-select/dist/select.min.js"></script>
+    <script src="bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.js"></script>
+    <script src="bower_components/angular-awesome-slider/dist/angular-awesome-slider.min.js"></script>
+    <script src="bower_components/range2dslider/jquery.range2dslider.js"></script>
+    <script src="scripts/lib/ion.rangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.v2.js"></script>
+    <script src="bower_components/doT.js"></script>
+    <!-- endbuild -->
+
+
+
+
+    <!-- build:js scripts/app.min.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/config.js"></script>
+    <script src="scripts/config.router.ui.js"></script>
+    <script src="scripts/config.lazyload.js"></script>
+    <script src="scripts/config-var.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/config.env.js -->
+    <script src="scripts/config.env.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/main.min.js -->
+    <script src="scripts/controllers/camps.js"></script>
+    <script src="scripts/controllers/diagnosis.js"></script>
+    <script src="scripts/controllers/campOverview.js"></script>
+    <script src="scripts/controllers/campPeople.js"></script>
+    <script src="scripts/controllers/trackingSetupController.js"></script>
+    <script src="scripts/controllers/companyInsightsCtrl.js"></script>
+    <script src="scripts/controllers/headerCtrl.js"></script>
+    <script src="scripts/controllers/visits.js"></script>
+    <script src="scripts/controllers/visits.people.js"></script>
+    <script src="scripts/controllers/commonTop.js"></script>
+
+    
+    
+    <script src="scripts/controllers/campaign_creation/campaignCreateCtrl.js"></script>
+    <script src="scripts/controllers/campaign_creation/campaignTypeCtrl.js"></script>
+    <script src="scripts/controllers/campaign_creation/campaignSettingsCtrl.js"></script>
+    <script src="scripts/controllers/campaign_creation/selectSegmentsCtrl.js"></script>
+
+    <script src="scripts/controllers/campaign_creation/creativeCreateCtrl.js"></script>
+    <script src="scripts/controllers/campaign_creation/campaignReviewCtrl.js"></script>
+
+    <script src="scripts/controllers/demand_gen/audienceV1Ctrl.js"></script>
+    <!--<script src="scripts/controllers/demand_gen/audienceIndustryCtrl.js"></script>-->
+    <script src="scripts/controllers/integrate/integrate.js"></script>
+    <script src="scripts/controllers/integrate/saml-config.js"></script>
+    <script src="scripts/controllers/model_result/modelResult.js"></script>
+    <script src="scripts/controllers/model_result/fitModel.js"></script>
+    <script src="scripts/controllers/model_result/engModel.js"></script>
+    <script src="scripts/controllers/model_result/efficiencyModel.js"></script>
+    <script src="scripts/controllers/customer/customerInsightCtrl.js"></script>
+
+    <script src="scripts/controllers/ui_example/uiExampleCtrl.js"></script>
+
+
+    <script src="scripts/filters/filter.js"></script>
+    <script src="scripts/filters/date.js"></script>
+    <script src="scripts/directives/lazyload.js"></script>
+    <script src="scripts/directives/ui-jp.js"></script>
+    <script src="scripts/directives/ui-nav.js"></script>
+    <script src="scripts/directives/ui-pagination.js"></script>
+    <script src="scripts/directives/ui-fullscreen.js"></script>
+    <script src="scripts/directives/ui-scroll.js"></script>
+    <script src="scripts/directives/es-ratio-bar.js"></script>
+    <script src="scripts/directives/loading-mask.js"></script>
+    <script src="scripts/directives/warning-mask.js"></script>
+    <script src="scripts/directives/alertService.js"></script>
+    <script src="scripts/directives/modelChart.js"></script>
+    <script src="scripts/directives/modelDescription.js"></script>
+
+    <script src="scripts/services/globalAlert.js"></script>
+    <script src="scripts/services/modelDescription.js"></script>
+    <script src="scripts/services/userinfo.js"></script>
+    <script src="scripts/services/model_result/modelData.js"></script>
+    <script src="scripts/services/segments/segments.js"></script>
+    <script src="scripts/services/ui-load.js"></script>
+    <script src="scripts/services/ngDraggable.js"></script>
+    
+    <script src="scripts/init.js"></script>
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+
+
+
+</body>
+</html>

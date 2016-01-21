@@ -1,0 +1,24 @@
+{
+    "status": 200,
+    "statusInfo": "",
+    "data": [
+        {
+            "name": "Microsoft",
+            "reach": 5687,
+            "clicks": 1222,
+            "engage": 233
+        },
+        {
+            "name": "IBM",
+            "reach": 5687,
+            "clicks": 1222,
+            "engage": 233
+        },
+        {
+            "name": "XiaoMi",
+            "reach": 5687,
+            "clicks": 1222,
+            "engage": 233
+        }
+    ]
+}

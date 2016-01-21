@@ -1,0 +1,131 @@
+<div class="p-h">
+    <h1 class="no-margin">
+        <span class="h1">H1 .h1</span>
+        &lt;div class=&quot;h1&quot;&gt;H1&lt;/div&gt;
+    </h1>
+
+    <h2 class="no-margin">
+        <span class="h2">H2 .h2</span>
+        &lt;div class=&quot;h2&quot;&gt;H2&lt;/div&gt;
+    </h2>
+
+    <h3 class="no-margin">
+        <span class="h3">H3 .h3</span>
+        &lt;div class=&quot;h3&quot;&gt;H3&lt;/div&gt;
+    </h3>
+
+</div>
+
+<div class="p-h p-v-lg">
+
+    <div class="card-major">card-major 22px 500 normal</div>
+    <div class="card-minor">card-minor 18px 500 normal</div>
+    <span class="card-label">card-label 14px 600 ALL CAPS</span> card-label
+    <br>
+
+    <div class="data-text">data-text 16px 400 normal</div>
+    <div class="data-label">data-label 14px 600 normal</div>
+    <br>
+
+    <div class="instruction">instruction 18px 200 normal</div>
+    <div class="chart-description">chart-description 16px 200 normal</div>
+    <div class="chart-data">chart-data 14px 300 normal</div>
+    <div class="chart-legend">chart-legend 12px 200 normal</div>
+    <br>
+
+    <div class="link-text">link-text 16px 300 normal</div>
+    <br>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>th</th>
+            <th>table</th>
+            <th>table-striped</th>
+        </tr>
+        </thead>
+        <tr>
+            <td></td>
+            <td>class="table table-striped"</td>
+            <td>td text 14px #000</td>
+        </tr>
+    </table>
+
+
+</div>
+
+
+<div>
+    <table class="table table-striped aligned-font">
+        <thead>
+        <tr>
+            <th ng-repeat="row in campaignList.tableHeader" class="{{row.align}}">
+                <a href=""
+                   ng-click="campaignList.sortKey = '{{row.dbkey}}'; campaignList.orderBy('{{row.dbkey}}', row.reverse);row.reverse=!row.reverse;">{{row.name}}
+                    <i ng-show="campaignList.sortKey != '{{row.dbkey}}'" class="fa fa-sort"></i>
+                    <i ng-show="campaignList.sortKey == '{{row.dbkey}}' && !row.reverse"
+                       class="fa fa-sort-up"></i>
+                            <span ng-show="campaignList.sortKey == '{{row.dbkey}}' && row.reverse"
+                                  class="fa fa-sort-down"></span>
+                </a>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in [{name:12},{name:33}]">
+            <td><a ui-sref="ads.campaign.show({ id: row.id })" class="big-text">{{row.campaignName }}</a></td>
+            <td>
+                test
+            </td>
+            <td class="text-right">test</td>
+            <td class="text-right">test</td>
+            <td class="text-right">{{row.ctr*100 | number:2}}%</td>
+            <td class="text-right">{{(row.cpm | currency:"$":2) }}</td>
+            <td class="text-right">{{(row.cpc | currency:"$":2) || "--"}}</td>
+            <td class="text-right">{{(row.spend | currency:"$":2) || "--" }}</td>
+            <td class="text-right">{{(row.budget | currency:"$":0) }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ui-pagination config="campaignList.pageInfo"/>
+
+</div>
+
+<div class="clear-both">
+
+    <label class="select">
+        <select class="field-selected" style="width: 344px;">
+            <option value=""></option>
+            <option value="AnnualRevenue">AnnualRevenue -- [currency]</option>
+            <option value="City">City -- [string]</option>
+            <option value="CleanStatus">CleanStatus -- [PICK LIST]</option>
+            <option value="Company">Company -- [string]</option>
+            <option value="CompanyDunsNumber">CompanyDunsNumber -- [string]</option>
+
+        </select>
+    </label>
+</div>
+
+
+<div class="m-l-lg">
+    <ul class="btn-groups" style="margin-top:1px;">
+        <li class="">
+            <a href class="clear btn-big-grey" bs-dropdown="dropdownAudience"
+               data-placement="bottom-left" data-animation="am-collapse">select
+                <i class="fa fa-ellipsis-h"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div>
+    <button class="btn btn-primary" type="button" data-trigger="hover" data-container="body"
+            data-type="success" data-title="tooltip.title" bs-tooltip>Click me</button>
+</div>
+
+<div>
+
+</div>
+
+<span class="badge badge-lg bg-active}} big-point">&nbsp;</span>
+<span class="text-black">  Actived </span>

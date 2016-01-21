@@ -1,0 +1,60 @@
+<div class="app-aside-inner ng-scope affix-top" bs-affix="" style="position: absolute;">
+    <div class="app-aside-body scrollable hover ng-scope" ><nav ui-nav="" class="ng-scope">
+    <ul class="nav">
+        <li class="nav-header h4 m-v-sm">
+            UI Kits
+        </li>
+        <li ng-class="{active:$state.includes('ui.component')}">
+            <a>
+        <span class="pull-right text-muted">
+          <i class="fa fa-caret-down"></i>
+        </span>
+                <i class="icon  text-xxs b-2x glyphicon glyphicon-briefcase"></i>
+                <span class="font-normal">Components</span>
+            </a>
+            <ul class="nav nav-sub bg">
+                <li ui-sref-active="active">
+                    <a ui-sref="ui.component.arrow" href="#/ui/component/arrow">Arrow</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="ui.component.badge-label" href="#/ui/component/badge-label">Badge &amp; Label</a>
+                </li>
+
+            </ul>
+        </li>
+        <li ng-class="{active:$state.includes('ui.angular-strap')}">
+            <a>
+        <span class="pull-right text-muted">
+          <i class="fa fa-caret-down"></i>
+        </span>
+                <b class="badge bg-success pull-right">14</b>
+                <i class="icon  text-xxs b-2x glyphicon glyphicon-font"></i>
+                <span class="font-normal">Angular Strap</span>
+            </a>
+            <ul class="nav nav-sub bg">
+                <li ui-sref-active="active">
+                    <a ui-sref="ui.angular-strap.affix" href="#/ui/angular-strap/affix">Affix</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="ui.angular-strap.alert" href="#/ui/angular-strap/alert">Alert</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="ui.angular-strap.aside" href="#/ui/angular-strap/aside">Aside</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="ui.angular-strap.button" href="#/ui/angular-strap/button">Button</a>
+                </li>
+
+            </ul>
+        </li>
+
+
+
+    </ul>
+</nav>
+</div>
+    <div class="app-aside-footer p text-xs">
+        <span>Help</span>
+
+    </div>
+</div>

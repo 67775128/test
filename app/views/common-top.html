@@ -1,0 +1,46 @@
+<div class="weekly-goal" ng-controller="CommonTopCtrl">
+    <div class="panel" style="background-color: #E7E7E7;">
+        <div class="p-sm">
+            <table>
+                <tr>
+                    <td class="text-upper p-h-sm">
+                        Weekly <br> Goals
+                    </td>
+                    <td class="p-h-sm" style="border-left: 1px solid #ccc;">
+                        <div>Conversions</div>
+                        <div><span class="span-to-label">{{conversionCount | megaNumber}} Reached (of </span>
+                            <span class="span-to-label" ng-if="!campainGoal.canEdit">{{campainGoal.data.conversion_num | megaNumber}}</span>
+                            <input type="number" ng-model="campainGoal.data.conversion_num" min="1"
+                                   ng-pattern="/^\d[0-9]{0,55}$/"
+                                   ng-class="{'input-to-label':!campainGoal.canEdit, '':campainGoal.canEdit}"
+                                   ng-if="campainGoal.canEdit" style="width:70px;"/><span class="span-to-label">)</span>
+                        </div>
+                    </td>
+                    <td class="p-h-sm">
+                        <div>Net New Visits</div>
+                        <div><span class="span-to-label">{{netnewCount | megaNumber}} Reached (of </span>
+                            <span class="span-to-label" ng-if="!campainGoal.canEdit">{{campainGoal.data.net_new_num | megaNumber}}</span>
+                            <input type="number" ng-model="campainGoal.data.net_new_num" min="1"
+                                   ng-pattern="/^\d[0-9]{0,55}$/"
+                                   ng-class="{'input-to-label':!campainGoal.canEdit, '':campainGoal.canEdit}"
+                                   ng-if="campainGoal.canEdit" style="width:70px;"/><span class="span-to-label">)</span>
+                        </div>
+                    </td>
+
+                </tr>
+            </table>
+
+            <button ng-if="!campainGoal.canEdit" class="weekly-goal-edit btn-no-border"
+                    ng-click="campainGoal.canEdit=!campainGoal.canEdit">
+                <i class="ti-pencil"></i></button>
+            <div class="weekly-goal-edit">
+                <button ng-if="campainGoal.canEdit" class="btn-no-border" ng-click="campainGoal.canEdit=false">
+                    <i class="ti-back-right"></i></button>
+                <button ng-if="campainGoal.canEdit" class="btn-no-border" ng-click="campainGoal.editGoals()">
+                    <i class="ti-save"></i></button>
+            </div>
+
+
+        </div>
+    </div>
+</div>

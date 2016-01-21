@@ -1,0 +1,26 @@
+<div class="aside demand-aside location-aside" tabindex="-1" role="dialog">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-rounded btn-primary" ng-click="$hide()" id="btn-close">CLOSE</button>
+
+                        <h2 class="m-t-lg m-b-md"><i class="ui-icon btr bt-magic m-r"></i>Seniority Categories: {{filteredContactCount  | number:0}} contacts</h2>
+                        <div class="wrapper">
+                            <div class="row">
+                                <div class="col-md-2 col" ng-repeat="(key,value) in seniorities">
+                                    <div ng-class="{'block': true,'selected': value.checked}"
+                                         ng-click="audience.contact.level.toggle(value.id)">
+                                        <span>{{value.name || "(Blank)"}}</span><br />
+                                        <span>{{value.num | number:0}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

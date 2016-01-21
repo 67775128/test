@@ -1,0 +1,87 @@
+<div class="aside campaign-company-aside" tabindex="-1" role="dialog" ng-controller="CompanyInsightsCtrl">
+  <div class="aside-dialog">
+    <div class="aside-content">
+      <div class="aside-body">
+        <div class="row">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-rounded btn-primary" ng-click="$hide()" id="btn-close">CLOSE</button>
+
+            <h2 class="m-t-lg m-b-md"><i class="ui-icon fa fa-building-o m-r"></i>Account Insights</h2>
+
+            <div class="panel" id="company-profile">
+              <div class="panel-body row no-padding">
+                <div class="col-md-8 p b-r main-container">
+                  <div class="col-md-5">
+                    <h2 class="text-black no-margin">{{company.name}}</h2>
+                    <p class="no-margin">{{company.address_street}}</p>
+                    <p class="no-margin">{{formatLevelOneAddress(company)}}</p>
+                    <a ng-href="http://{{company.domain}}" class="box url">{{company.domain}}</a>
+                  </div>
+
+                  <div class="col-md-7" id="score-meters">
+                    <div class="inline col-md-4" ng-repeat="score in scores">
+                      <div class="score-meter-title">{{score.title}}</div>
+                      <div easypiechart options="score.options" percent="score.value || 0" class="easyPieChart">
+                        <div class="score-value text-black">
+                          {{score.value}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 sidebar-container" ng-show="company.description">
+                    <h5>DESCRIPTION</h5>
+                    <p ng-init="length = 200">
+                      {{company.description | characters:length}}
+                      <a ng-click="length = Number.MAX_VALUE" ng-show="length == 200">More</a>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+
+                  <div class="m-v-xs profile-card">
+                    <h3 class="m"><i class="ui-icon fa fa-flask"></i></h3>
+                    <div class="flex-column">
+                      <h4 class="card-key">Industry</h4>
+                      <div class="card-value">{{company.industry || '--'}}</div>
+                    </div>
+                  </div>
+
+                  <div class="m-v-xs profile-card">
+                    <h3 class="m"><i class="ui-icon fa fa-money"></i></h3>
+                    <div class="flex-column">
+                      <h4 class="card-key">Revenue</h4>
+                      <div class="card-value">{{(company.revenue | currency:'$') || '--'}}</div>
+                    </div>
+                  </div>
+
+                  <div class="m-v-xs profile-card">
+                    <h3 class="m"><i class="ui-icon fa fa-users"></i></h3>
+                    <div class="flex-column">
+                      <h4 class="card-key">Employees</h4>
+                      <div class="card-value">{{company.employee_size || '--'}}</div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="panel" id="aggregated-metrics">
+              <div class="panel-body">
+                <i class="fa fa-bolt m"></i>
+                <span class="text-green">{{agg_metrics.spend<0.01?"<$0.01":(agg_metrics.spend | currency:'$') }}</span> spent in <span class="text-blue">{{ agg_metrics.days }}</span> days made <span class="text-blue">{{ agg_metrics.impressions | number }}</span> impressions and generated <span class="text-blue">{{ agg_metrics.clicks | number }}</span> clicks.
+              </div>
+            </div>
+
+            <h3>Customer Journey</h3>
+            <div class="panel" id="daily-metrics">
+              <div class="panel-body" id="daily-metrics-charts">Loading charts...</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

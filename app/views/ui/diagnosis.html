@@ -1,0 +1,123 @@
+<div class="p-v-sm m-v pos-rlt clear">
+    <h1 class="no-margin">
+    <div class="pull-left title-ico"><i class="ui-icon fa fa-dashboard"></i></div>
+    <div class="pull-left title-text">Diagnosis</div>
+    </h1>
+</div>
+<div lazy-load="angularBootstrap"></div>
+<div class="row" ng-show="camp.loading!=false" ng-animate="'animate'">
+    <div class="col-sm-12">
+        <div class="panel-heading-left0">All Companies</div>
+        <div class="panel panel-default bg-white" style="padding-top:80px;">
+            <loading ng-show="funnel.loading==true"></loading>
+            <div class="p-v p-h">
+                <table style="width: 100%;">
+                    <tr>
+                        <td class="p-v-sm" style="width: 210px;">
+                            <div class="panel-body">
+                                <div class="label-md text-center">{{data[1][0]}}</div>
+                                <div class="black-num-3x text-center">${{ sumRow(data[1]) | number:0}}</div>
+                            </div>
+                        </td>
+                        <td class="p-v-sm text-center"></td>
+                    </tr>
+                    <tr>
+                        <td class="p-v-sm" style="width: 210px;">
+                            <div class="panel-body">
+                                <div class="label-md text-center">{{data[2][0]}}</div>
+                                <div class="black-num-3x text-center">${{ sumRow(data[2]) | number:0}}</div>
+                            </div>
+                        </td>
+                        <td class="p-v-sm text-center">
+                            <div class="input-group m-b capsule" style="width:90%;">
+                                <span ng-repeat="n in data[1]  track by $index" ng-if="$index > 0"
+                                    class="input-group-addon capsule-ads-{{($index-1)%4}} capsule-sub"
+                                    style="width:{{data[1][$index]}}px;">
+                                    <div class="capsule-label">
+                                        <div class="label-circle">
+                                            <div class="label-md text-center">{{data[0][$index]}}</div>
+                                            <div class="black-num text-center">${{data[1][$index] | number:0}}
+                                            </div>
+                                        </div>
+                                        <div class="label-line">
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="arr in midData  track by $index" ng-init="ourterIndex = $index">
+                        <td class="p-v-sm">
+                            <div class="panel-body">
+                                <div class="label-md text-center">{{arr[0]}}</div>
+                                <div class="black-num-3x text-center">${{ sumRow(arr) | number:0}}</div>
+                            </div>
+                        </td>
+                        <td class="p-v-sm text-center">
+                            <div class="input-group m-b capsule" style="width:{{$index | makeWidthPerc}}%;">
+                                <span ng-repeat="v in arr track by $index" ng-init="innerIndex = $index" ng-if="$index > 0"
+                                    class="input-group-addon capsule-ads-{{($index-1)%4}} capsule-sub"
+                                style="width:{{v}}px;"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-v-sm" style="padding-bottom: 0;">
+                            <div class="panel-body">
+                                <div class="label-md text-center">{{lastData[0]}}</div>
+                                <div class="black-num-3x text-center">${{ sumRow(lastData) | number:0}}</div>
+                            </div>
+                        </td>
+                        <td class="p-v-sm text-center"
+                            style="padding-bottom: 0;">
+                            <div class="input-group m-b label-circle-div">
+                                <div ng-repeat="v in lastData track by $index"  ng-init="innerIndex = $index" ng-if="$index > 0"
+                                    class="label-circle bg-ads-{{($index-1)%4}}">
+                                    <div class="black-num text-center">${{v | number:0}}</div>
+                                    <div class="label-title text-center">{{data[0][innerIndex]}}</div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-v-sm " style="padding-bottom: 0;">
+                        </td>
+                        <td class="p-v-sm  text-center"
+                            style="padding-bottom: 0;">
+                            <div class="panel b-a" style="width: 373px;margin:10px auto;">
+                                <div class="p-lg">
+                                    <div class="pull-left pull-none-sm p-h text-center m-r-xs">
+                                        <div style="width: 65px; height: 65px; line-height: 65px;">
+                                            <i class="fa fa-bank text-4x"></i>
+                                        </div>
+                                    </div>
+                                    <div class="clear">
+                                        <div class="label-md text-center">Marketing ROI</div>
+                                        <div class="text-2x font-bold">${{roi | number:0}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <button ng-click="showEdit=!showEdit" class="btn btn-icon btn-default m-b"><i class="fa fa-pencil"></i></button>
+        <div class="panel" ng-show="!showEdit">
+            <div class="panel-head"></div>
+            <div class="panel-body">
+                <div id="editTable"></div>
+                <div class="m-t">
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">ROI:</span>
+                        <input style="width:200px;" type="text" class="form-control" placeholder="ROI" ng-model="roi" >
+                    </div>
+                </div>
+                <div class="m-t">
+                    <button class="btn w-xs btn-primary" ng-click="saveTable(data)">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

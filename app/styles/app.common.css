@@ -1,0 +1,222 @@
+/*
+*/
+.app-header {
+  min-height: 52px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.3);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.3);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.3);
+}
+.navbar .navbar-brand {
+  padding: 15px 21px;
+}
+select {
+  padding: 7px 24px 7px 7px;
+  border: 1px solid #ddd;
+  border-radius: 1px;
+}
+button:disabled,
+button:disabled:hover {
+  background: #dbdbdb;
+}
+.es-select {
+  position: relative;
+}
+.es-select:after {
+  content: "\f107";
+  font-family: FontAwesome;
+  position: absolute;
+  right: 9px;
+  top: 4px;
+  font-size: 20px;
+  pointer-events: none;
+  color: #666;
+}
+.es-select > select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #fff;
+}
+.es-select > select:hover {
+  border: 1px solid #55a4fb;
+}
+.ui-select-bootstrap .ui-select-toggle > .caret {
+  border-top: 0;
+  margin-top: -11px;
+  margin-right: 10px;
+}
+.ui-select-bootstrap .ui-select-toggle:hover {
+  color: #55a4fb;
+}
+.ui-select-bootstrap .ui-select-toggle:hover > .caret:before {
+  color: #55a4fb;
+}
+.ui-select-bootstrap .ui-select-toggle > .caret:before {
+  font: normal normal normal 24px/1 FontAwesome;
+  position: relative;
+  content: "\f107";
+}
+.input-sm,
+.form-horizontal .form-group-sm .form-control {
+  height: 28px;
+  padding: 5px 10px;
+}
+.input-group-addon {
+  border-color: #ddd;
+}
+.form-control {
+  border-color: #ddd;
+  font-size: 14px;
+}
+.text-semibold {
+  font-weight: 600 !important;
+}
+ul {
+  -webkit-padding-start: 0;
+  margin-bottom: 0;
+}
+table.table tr:nth-child(even) td {
+  background: #Fafafa;
+}
+table.table tr:nth-child(odd) td {
+  background: #FFFFFF;
+}
+table.table tr:nth-child(even) td.emphasis {
+  background: #f4fafc;
+  border-left: 1px solid #e4f6fd;
+}
+table.table tr:nth-child(odd) td.emphasis {
+  background: #f7fdff;
+  border-left: 1px solid #e4f6fd;
+}
+table.table tr:nth-child(even):hover td {
+  background: #F5f5f5;
+}
+table.table tr:nth-child(odd):hover td {
+  background: #F1f1f1;
+}
+table.table tr:nth-child(even):hover td.emphasis {
+  background: #F5f6f9;
+}
+table.table tr:nth-child(odd):hover td.emphasis {
+  background: #F5f6f9;
+}
+table.table > thead > tr > th:first-child {
+  padding-left: 15px;
+}
+table.table > thead > tr > th:last-child {
+  padding-right: 15px;
+}
+table.table > tbody > tr > td:first-child {
+  padding-left: 15px;
+}
+table.table > tbody > tr > td:last-child {
+  padding-right: 15px;
+}
+.tooltip {
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 1;
+}
+.tooltip .tooltip-inner {
+  background-color: #666;
+  opacity: 1;
+  color: #fff;
+}
+.tooltip.in {
+  opacity: 1;
+}
+.alert .close {
+  color: #fff;
+  line-height: 1.25;
+  text-shadow: 0 0 0;
+  font-weight: 200;
+  right: 77px;
+  position: absolute;
+}
+.alert .close:hover {
+  color: #fff;
+}
+.modal-header .close {
+  text-shadow: 0 0 0;
+  font-weight: 200;
+}
+label.disabled span {
+  color: #dbdbdb;
+}
+.input-as-span {
+  border: 1px solid transparent;
+  background-color: transparent;
+  margin-left: -3px;
+}
+.input-as-span:hover,
+.input-as-span:active,
+.input-as-span:focus {
+  border: 1px solid #999;
+}
+.big-point {
+  border-radius: 20px;
+  font-size: 16px;
+  padding: 2px 8px;
+}
+input[type="text"] {
+  padding: 7px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+}
+input[type="text"]:hover {
+  color: #55a4fb;
+  border: 1px solid #55a4fb;
+}
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+  border-color: #55a4fb;
+  color: #55a4fb !important;
+  background-color: #fff !important;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  color: #fff;
+  background-color: #055ec3 !important;
+}
+.label-md {
+  line-height: 36px;
+  margin-bottom: 0;
+}
+.bt-big {
+  font-size: 20px;
+}
+.top-alert {
+  position: fixed;
+  top: 80px;
+  width: 100%;
+  z-index: 500;
+  box-shadow: 0 1px 1px #888888;
+}
+.es-breadcrumb {
+  position: fixed;
+  top: 52px;
+  width: 100%;
+  z-index: 500;
+}
+.bt-angle-nav:before {
+  content: "\f093";
+  font-size: 9px;
+}
+li.active > a > span > i.bt-angle-nav:before {
+  content: "\f091";
+  font-size: 9px;
+}
+nav ul.nav li > a > .pull-right i {
+  top: -3px;
+}
+nav ul.nav li.active > a > .pull-right i {
+  top: -3px;
+}
+/*# sourceMappingURL=app.common.css.map */

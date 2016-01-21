@@ -1,0 +1,27 @@
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" ng-show="title">
+                <button type="button" class="close" ng-click="$hide()">&times;</button>
+                <h4 class="modal-title" ng-bind-html="title"></h4>
+            </div>
+
+            <div class="modal-body">
+
+                <p>
+                    Definition of conversion event: <a href="javascript:;" ng-click="config.resetDescription()">Reset</a><br/>
+                    <textarea class="form-control" rows="5" ng-model="config.description"></textarea>
+                </p>
+                <p>
+                    Tooltip: <a href="javascript:;" ng-click="config.resetTip()">Reset</a><br/>
+                    <textarea class="form-control" rows="5" ng-model="config.tip"></textarea>
+                </p>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" type="button" ng-click="$hide()">close</button>
+                <button class="btn btn-primary" ng-click="config.saveDescription()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

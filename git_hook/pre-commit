@@ -1,0 +1,52 @@
+#!/usr/bin/env python
+import os
+import sys
+
+"""
+Checks your git commit with JSHint/CSSLint. Only checks staged files
+"""
+
+
+def checks():
+
+    errors = []
+
+    # get all staged files
+    f = os.popen('git diff-index --name-only --cached HEAD \
+                 | grep ".js$" | grep -v "app/bower_components" | grep -v \'min.js\'')
+
+    for file in f.readlines():
+        # you may have to change path to jshint!
+        # global options stored in ~/.jshintrc
+        g = os.popen('jshint ' + file)
+
+        # add all errors from all files together
+        for error in g.readlines():
+            errors.append(error)
+
+    # Generated css... don't need lint
+    # f = os.popen('git diff-index --name-only --cached HEAD \
+    #              | grep ".css$" | grep -v "app/bower_components"')
+
+    # for file in f.readlines():
+    #     # you may have to change path to jshint!
+    #     # global options stored in ~/.jshintrc
+    #     g = os.popen('csslint ' + file)
+
+    #     # add all errors from all files together
+    #     for error in g.readlines():
+    #         errors.append(error)
+
+    # got errors?
+    if errors:
+        for i, error in enumerate(errors):
+            print error,
+
+        # Abort the commit
+        sys.exit(1)
+
+    # All good
+    sys.exit(0)
+
+if __name__ == '__main__':
+    checks()

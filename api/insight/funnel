@@ -1,0 +1,15 @@
+{
+    "status": 200,
+    "statusInfo": "",
+    "data": {
+        "targetComp": 3600,
+        "compFound": 55000,
+        "compInterested": 2323,
+        "compEngaged": 23,
+        "compSold": 23,
+        "peopleImp": 50000,
+        "peopleClicks": 20000,
+        "peopleEngaged": 54445,
+        "peopleConv": 500
+    }
+}

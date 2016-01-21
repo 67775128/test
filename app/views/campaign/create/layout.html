@@ -1,0 +1,33 @@
+<div class="p-v-sm m-t pos-rlt clear">
+    <h1 class="no-margin">
+        <div class="pull-left title-ico"><i class="ui-icon fa fa-bullhorn"></i></div>
+        <div class="pull-left title-text">Create New Campaign</div>
+    </h1>
+</div>
+
+<div>
+	<ul ng-if="state.name!='type'" class="m-b m-t wizard-steps flexbox align-center" ui-nav>
+    	<li class="flex" ui-sref-active="active">
+            <button class="instruction" ui-sref="ads.campaign.create.campaign_settings"><span class="circle">1</span> Campaign Settings</button>
+            <div class="arrow-right"></div>
+    	</li>
+
+    	<li class="flex" ui-sref-active="active">
+            <div class="arrow-right reverse"></div>
+            <button class="instruction" ui-sref="ads.campaign.create.select_segments"><span class="circle">2</span> Select Segments</button>
+            <div class="arrow-right"></div>
+    	</li>
+
+    	<li class="flex" ui-sref-active="active">
+            <div class="arrow-right reverse"></div>
+    		<button class="instruction" ui-sref="ads.campaign.create.choose_ads"><span class="circle">3</span> Select/Upload Ads</button>
+            <div class="arrow-right"></div>
+    	</li>
+
+        <li class="flex" ui-sref-active="active">
+            <div class="arrow-right reverse"></div>
+            <button class="instruction" ui-sref="ads.campaign.create.review"><span class="circle">4</span> Review</button>
+        </li>
+	</ul>
+	<div ui-view></div>
+</div>

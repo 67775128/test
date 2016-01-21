@@ -1,0 +1,1594 @@
+<style>
+    /* #rateDetailView{
+         width: 150%;
+         transition:transform 1s;
+         -moz-transition:-moz-transform 1s;
+         -webkit-transition:-webkit-transform 1s;
+         -o-transition:-o-transform 1s;
+     }*/
+    ul,li {
+        list-style: none
+    }
+
+    #content {
+        height: 100%;
+    }
+
+    .content-tuchu {
+        overflow: auto
+    }
+    .popover-title{
+        padding:0
+    }
+    .popover-content{
+        padding:0
+    }
+    .realtime-edit-box {
+        position: relative;
+    }
+    .filter-list input[type="checkbox"]{
+        margin: 0;
+        border: 1px #dcdcdc solid;
+        background-color: #fff;
+        -webkit-appearance: none;
+        height: 20px;
+        width: 20px;
+        outline: none;
+
+        /* border-radius: 2px; */
+    }
+
+    .filter-list input[type="checkbox"]{
+        outline: none;
+        margin-right: 5px;
+    }
+
+    input, button, textarea, select, optgroup, option {
+        font-family: inherit;
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+    }
+
+    .filter-list input[type="checkbox"]:enabled:checked {
+        background:url(images/check.png) no-repeat center;
+        background-size: 100%
+    }
+    .filter-list input.indeterminate[type="checkbox"]:enabled{
+        background:url(images/check-no-all.png) no-repeat center;
+        background-size: 100%
+    }
+
+    .container-fluid .row-fluid:first-child {
+        margin-top: 0;
+    }
+
+    .btn-group .btn.dropdown-toggle {
+        background: #f9fafb;
+        box-shadow: none
+    }
+
+    .realtime-edit-box input::input-placeholder, textarea::input-placeholder {
+        color: #055ec3;
+    }
+
+    .realtime-edit-box input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+        color: #055ec3;
+    }
+
+    .realtime-edit-box input:-moz-placeholder, textarea:-moz-placeholder {
+        color: #055ec3;
+    }
+
+    .realtime-edit-box input::-moz-placeholder, textarea::-moz-placeholder {
+        color: #055ec3;
+    }
+
+    .realtime-edit-box input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+        color: #055ec3;
+    }
+
+    .detailView {
+        margin-bottom: 60px;
+    }
+
+    .np-width6 {
+        float: left;
+        width: 50%;
+        height: 100%;
+        margin-left: 0;
+        min-height: 30px;
+        box-sizing: border-box;
+    }
+
+    @media (min-width: 268px) and (max-width: 979px) {
+        /*#rateDetailView{
+            width: 100%;
+        }*/
+        .np-width6 {
+            display: block;
+            float: none;
+            margin-left: 0;
+            width: auto;
+        }
+
+        .segment-content .filter-list::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .segment-content .filter-result-content .unfold-btn {
+            display: none
+        }
+
+        .segment-content .filter-result-content,
+        .segment-content.unfold .filter-result-content.np-width6 {
+            padding-left: 0
+        }
+
+        .filter-result-content .info-input-content,
+        .unfold .filter-result-content .info-input-content {
+            padding-left: 0;
+            margin-left: 0;
+        }
+
+        .detailView .segment-content.unfold .filter-list {
+            width: auto;
+
+        }
+    }
+
+    /*.row-fluid-animation-right{
+        transform: translateX(-33.333%);
+        -ms-transform: translateX(-33.333%);
+        -webkit-transform: translateX(-33.333%);
+        -o-transform: translateX(-33.333%);
+        -moz-transform: translateX(-33.333%);
+    }*/
+    .segment-content {
+        border: 1px solid #e0e0e0;
+        box-sizing: border-box;
+        position: relative
+    }
+
+    .detailView .bt-trash:hover {
+        color: #3498db
+    }
+
+    .filter-result-content {
+        position: relative;
+        /*border-left: 1px solid #e0e0e0;*/
+        height: 580px;
+        padding-left: 16px;
+        background: #fff;
+        transition: width .5s;
+        -moz-transition: width .5s; /* Firefox 4 */
+        -webkit-transition: width .5s; /* Safari Chrome */
+        -o-transition: width .5s; /* Opera */
+
+    }
+
+    .match-number {
+        padding: 0 20px;
+        max-width: 550px;
+        margin: 0 auto
+    }
+
+    .match-number dl {
+        margin-bottom: 0
+    }
+
+    .match-number dl dt {
+        padding: 20px 0;
+        font-weight: normal;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .match-number dl dd {
+
+    }
+
+    .match-number dl dd div {
+        display: inline-block;
+        width: 49%;
+        overflow: hidden;
+    }
+
+    .match-number dl dd {
+        margin-left: 0
+    }
+
+    .match-number p {
+        text-align: center
+    }
+
+    .match-number .es-blue {
+        font-size: 24px
+    }
+
+    .info-input-content {
+        width: 100%;
+        height: 84px;
+        border-top: 1px solid #e0e0e0;
+        /*overflow: hidden;*/
+        position: absolute;
+        padding-left: 16px;
+        box-sizing: border-box;
+        margin-left: -16px;
+        bottom: 0
+    }
+
+    .unfold .info-input-content {
+        padding-left: 22px;
+        margin-left: -22px;
+    }
+
+    .unfold .info-input-content-child {
+        width: 550px;
+        margin: 0 auto;
+    }
+
+    .info-input-content .info-input-item {
+        width: 33.333%;
+        height: 74px;
+        float: left;
+        padding: 0 10px;
+        margin: 5px 0px;
+        border-right: 1px solid #e0e0e0;
+        box-sizing: border-box;
+        /*overflow: hidden;*/
+    }
+
+    .info-input-content .info-input-item:last-child {
+        border: none;
+    }
+
+    .info-input-content .info-input-item dt {
+        height: 20px;
+    }
+
+    .info-input-content .info-input-item dd {
+        position: relative;
+        margin: 0;
+        height: 30px;
+        /*overflow: hidden;*/
+        text-align: center
+    }
+
+    .info-input-content .realtime-edit {
+        width: 100%;
+        margin-bottom: 0;
+        height: 30px;
+        padding: 3px;
+        font-size: 22px;
+        line-height:22px;
+        font-weight: bold;
+        box-sizing: border-box;
+        text-align: center;
+        border: 1px solid #fff !important;
+    }
+	.info-input-content .realtime-edit:disabled{
+    	color:#a6acc0;
+        cursor:default!important;
+    }
+    .info-input-content .realtime-edit:disabled:hover{
+        border:  1px solid #fff !important;
+    }
+
+    .info-input-content .realtime-edit-icon {
+        position: absolute;
+        right: 9px;
+        top: 0;
+        margin-top: 5px;
+    }
+
+    .info-input-content .info-input-item .frequency .dropdown-toggle {
+        border: none;
+        width: 120px;
+        padding: 0 10px;
+        height: 100%;
+        box-shadow: none;
+        text-align: left;
+        background: none;
+        font-size: 20px;
+
+    }
+
+    .info-input-content .info-input-item .frequency span {
+        line-height: 30px;
+    }
+
+    .info-input-content .info-input-item .frequency span.es-blue {
+        font-size: 16px;
+    }
+
+    .info-input-content .info-input-item .frequency .bt-angle-down {
+        font-size: 14px;
+        line-height: 14px;
+    }
+
+    .info-input-content .info-input-item .frequency a {
+        padding: 3px 12px;
+        text-align: left;
+    }
+
+    .info-input-content .info-input-item .frequency .dropdown-menu {
+        min-width: 110px;
+    }
+
+    .info-input-content .info-input-item .bt-angle-down {
+        font-size: 14px;
+        color: #666
+    }
+
+    .info-input-content input.realtime-edit {
+        padding-right: 0
+    }
+
+    .filter-result-content .table {
+        margin-bottom: 0;
+    }
+
+    .filter-result-content .table th {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .filter-result-content .table td {
+        padding: 7px 5px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .filter-result-content .pagination {
+        border-top: 1px solid #e0e0e0;
+        margin: 0;
+        padding: 10px;
+        text-align: right;
+
+    }
+
+    .filter-result-content .pagination div {
+        margin: 0 auto;
+    }
+
+    .unfold .filter-result-content .pagination div {
+        max-width: 550px;
+    }
+
+    .segment-content .unfold-btn {
+        position: absolute;
+        width: 30px;
+        height: 100%;
+        float: left;
+        border: 1px solid #e0e0e0;
+        border-top: none;
+        border-bottom: none;
+        left: -16px;
+        z-index: 10;
+        cursor: pointer;
+        background: #fff;
+
+    }
+
+    .segment-content .unfold-btn .ti-filter {
+        color: #055ec3;
+        position: absolute;
+        top: 18px;
+        left: 5px;
+        font-size: 17px;
+    }
+
+    .segment-content .unfold-btn .bt-angle-left,
+    .segment-content .unfold-btn .bt-angle-right {
+        position: absolute;
+        top: 47%;
+        font-size: 14px;
+        left: 9px;
+
+    }
+
+    .segment-content .unfold-btn:hover .bt-angle-left,
+    .segment-content .unfold-btn:hover .bt-angle-right {
+        color: #055ec3
+    }
+
+    .segment-content .unfold-btn .bt-angle-right {
+        display: none
+    }
+
+    .segment-content.unfold .filter-list {
+        width: 0;
+        padding: 0;
+
+    }
+
+    .segment-content.unfold .filter-result-content {
+        width: 100%;
+        padding-left: 32px;
+    }
+
+    .segment-content.unfold .filter-result-content .unfold-btn {
+        left: 0;
+        border-left: 0
+    }
+
+    .segment-content.unfold .unfold-btn .bt-angle-right {
+        display: inline;
+    }
+
+    .segment-content.unfold .unfold-btn .bt-angle-left {
+        display: none
+    }
+
+    .filter-result-content .round {
+        display: inline-block;
+        width: 31px;
+        height: 31px;
+        line-height: 25px;
+        text-align: center;
+        border: 3px solid #055ec3;
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+    }
+
+    .filter-result-content .popover.bottom .arrow:after {
+        border-bottom-color: #6e6f6f
+    }
+
+    .filter-result-content .popover {
+        padding: 0;
+        width: 266px;
+    }
+
+    .filter-result-content .domain .popover {
+        width: 300px
+    }
+
+    .filter-result-content .popover-content h5 {
+        margin: 0;
+        padding: 10px 20px;
+        background: #6e6f6f;
+        color: #fff;
+        font-size: 15px;
+    }
+
+    .filter-result-content .popover-content td {
+        background: #fff;
+        padding: 5px 5px 5px 0;
+    }
+
+    .filter-result-content .popover-content td:first-child,
+    .filter-result-content .popover-content td:last-child {
+        padding: 0;
+    }
+
+    .filter-result-content .popover-content tr:first-child td {
+        padding-top: 20px
+    }
+
+    .filter-result-content .popover-content tr:last-child td {
+        padding-bottom: 20px
+    }
+
+    .filter-result-content .popover-content tr td div {
+        width: 108px;
+        overflow: hidden;
+        white-space: pre-line;
+    }
+
+    .filter-result-content .popover-content tr td p {
+        width: 112px;
+        line-height: 25px;
+        margin: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .filter-result-content .domain .popover-content tr td p {
+        width: 132px;
+    }
+
+    .filter-list {
+        height: 580px;
+        overflow: hidden;
+        padding-right: 16px;
+        background: #fff;
+        transition: width .5s;
+        -moz-transition: width .5s; /* Firefox 4 */
+        -webkit-transition: width .5s; /* Safari 閸滐拷Chrome */
+        -o-transition: width .5s;
+
+    }
+
+    .filter-list-tab {
+        height: 53px;
+        border-bottom: 1px solid #e0e0e0;
+        padding-left: 10px;
+        position: relative;
+    }
+
+    .filter-list-tab div {
+        position: absolute;
+        right: 25px;
+        top: 15px;
+    }
+
+    .filter-list-tab a {
+        float: left;
+        margin-bottom: -1px;
+        box-sizing: border-box;
+        height: 100%;
+        line-height: 53px;
+        margin: 0 10px;
+        color: #6e6e6e;
+
+    }
+
+    .filter-list-tab a.checked {
+        color: #6e6e6e;
+        font-weight: bold;
+        border-bottom: 4px solid #055ec3;
+    }
+
+    .filter-list-item {
+        height: 440px;
+        padding: 0 10px 0 20px;
+        overflow: hidden;
+        overflow-y: scroll
+    }
+
+    .filter-list-item::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .filter-list-item::-webkit-scrollbar-button {
+        display: none
+    }
+
+    /*.filter-list-item::-webkit-scrollbar-track{
+        background: #bac1c2
+    }
+    .filter-list-item::-webkit-scrollbar-track-piece{
+        background: #bac1c2
+    }*/
+    .filter-list-item::-webkit-scrollbar-thumb {
+        background: #6f6f6f
+    }
+
+    .filter-list-item::-webkit-scrollbar-corner {
+        display: none
+    }
+
+    .filter-list-item::-webkit-resizer {
+        display: none
+    }
+
+    .check-list-content {
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 10px;
+    }
+
+    .filter-list-item .check-list {
+        height: 58px;
+        overflow: hidden;
+        text-align: center;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .filter-list-item .check-list li {
+        width: 33.33%;
+        height: 28px;
+        float: left;
+        padding: 0 7px;
+        text-align: right;
+        box-sizing: border-box;
+    }
+
+    .filter-list-item .check-list li:nth-child(3n) {
+        padding-right: 0;
+    }
+
+    .filter-list-item .check-list li:nth-child(3n-2) {
+        padding-left: 0;
+    }
+
+    .filter-list-item .check-list .check-list-children {
+        display: none;
+        position: absolute;
+        width: 111px;
+        z-index: 99;
+        min-width: 109px;
+        padding: 8px;
+        margin-top: 10px;
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .filter-list-item .check-list .check-list-children li {
+        display: block;
+        width: 100%;
+        padding: 0;
+    }
+
+    .filter-list-item .check-list div {
+        float: left;
+        width: 100%;
+        height: 28px;
+        line-height: 28px;
+        box-sizing: border-box;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-align: left;
+        padding-right: 25px;
+        position: relative;
+
+    }
+
+    .filter-list-item .check-list a {
+        /*float: left;
+        margin-left:-20px;*/
+        position: absolute;
+        right: 0;
+    }
+
+    .filter-list-item .check-list .bt-angle-down {
+        font-size: 14px;
+        line-height: 28px;
+        color: #666
+    }
+
+    .filter-list-item .check-list .check-list-li .bt-angle-up {
+        display: none;
+        font-size: 14px;
+        line-height: 28px;
+        color: #666
+    }
+
+    .filter-list-item .check-list .unfold .bt-angle-up {
+        display: inline;
+    }
+
+    .filter-list-item .check-list .unfold .bt-angle-down {
+        display: none;
+    }
+
+    .filter-list-item .check-list .unfold .check-list-children {
+        display: block;
+    }
+
+    .check-list-content .show-all {
+        display: block;
+        text-align: center;
+        padding-top: 5px;
+    }
+
+    .filter-list-item-contacts .check-list {
+        height: 58px;
+        /*max-width:442px;*/
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .filter-list-item-contacts .check-list-content:last-child {
+        border: none;
+    }
+
+    .filter-list-item-contacts .check-list:last-child {
+        /*height: auto*/
+    }
+
+    .keys-textarea {
+        min-height: 100px;
+        /*padding-bottom: 20px;*/
+        border-bottom: 1px solid #e0e0e0;
+        overflow: hidden;
+    }
+
+    .range-slider li {
+        width: 50%;
+        float: left
+    }
+
+    .keys-textarea li {
+        width: 100%;
+        display: none;
+    }
+
+    .keys-textarea li p {
+        overflow: hidden
+    }
+
+    .keys-textarea .key-item {
+        float: left;
+        padding: 5px;
+        background: #6f6f6f;
+        margin: 0 10px 5px 0;
+        color: #fff;
+    }
+
+    .keys-textarea .key-item .bt-times {
+        color: #fff
+    }
+
+    .keys-textarea .key-item .bt-times:hover {
+        color: #dbdbdb
+    }
+
+    .range-slider {
+        padding: 20px 0;
+        overflow: hidden;
+    }
+
+    .range-slider .irs-bar {
+        height: 5px;
+        background: #055ec3;
+    }
+
+    .range-slider .irs-from, .range-slider .irs-to, .range-slider .irs-single {
+        background: none;
+        top: 35px;
+        color: #666;
+        font-size: 14px;
+    }
+
+    .range-slider .irs-from:after, .range-slider .irs-to:after, .range-slider .irs-single:after {
+        border: none
+    }
+
+    .range-slider .irs-slider.to,
+    .range-slider .irs-slider.from {
+        background: url(scripts/lib/ion.rangeSlider/img/range-slider1.png) 0 0 no-repeat;
+        background-size: 200% 100%;
+        top: 18px;
+    }
+
+    .range-slider .irs-slider.state_hover,
+    .range-slider .irs-slider.to:hover,
+    .range-slider .irs-slider.from:hover {
+        background-position: -11px 0;
+    }
+
+    .range-slider .irs-min, .range-slider .irs-max {
+        display: none;
+    }
+
+    .range-slider .irs-line {
+        background: #ebeaea;
+    }
+
+    .range-slider .irs-line-left,
+    .range-slider .irs-line-mid,
+    .range-slider .irs-line-right {
+        height: 2px;
+        margin-top: 2px;
+        background: #d8d8d7
+    }
+
+    .range-slider .irs-line-left {
+        left: 3px;
+    }
+
+    .range-slider .irs-line-right {
+        right: 3px;
+    }
+
+    .range-slider .irs-bar {
+        height: 2px;
+        margin-top: 2px;
+    }
+
+    .range-slider h5 {
+        margin-top: -5px;
+    }
+
+    .range-slider li {
+        box-sizing: border-box;
+        height: 100px;
+    }
+
+    .range-slider li p {
+        padding: 10px 30px 0
+    }
+
+    .range-slider li:first-child {
+        padding-right: 14px;
+        border-right: 1px solid #e0e0e0;
+    }
+
+    .range-slider li:last-child {
+        padding-left: 15px;
+    }
+
+    .add-segment {
+        width: 340px;
+        height: 110px;
+        margin: 20px auto;
+        text-align: center;
+        padding-top: 15px;
+        border: 2px #d7d7d7 dashed;
+        cursor: pointer;
+        border-radius: 6px;
+    }
+
+    .add-segment span {
+        font-size: 50px;
+        color: #d7d7d7
+    }
+
+    .add-segment:hover {
+        border: 2px #055ec3 dashed;
+    }
+
+    .add-segment:hover span {
+        color: #055ec3
+    }
+
+    .show-result {
+        height: 40px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 40px;
+        cursor: pointer;
+        color: #fff;
+        background: #055ec3
+    }
+
+    .show-result:hover {
+        background: #3498db
+    }
+
+    .export-btn {
+        float: right;
+        border: 1px solid #e0e0e0;
+        background-color: #Fff;
+        padding: 7px 20px;
+        border-radius: 6px;
+        color: #666;
+    }
+
+    input.realtime-edit {
+        border: 1px solid #f9f9f9 !important;
+        cursor: pointer !important;
+        padding: 4px 6px;
+        padding-right: 32px;
+        background-color: transparent !important;
+        color: #055ec3;
+    }
+
+    .export-btn:hover {
+        border-color: #055ec3
+    }
+
+    .export-drop-content {
+        position: relative;
+        float: right;
+    }
+
+    .export-drop-list {
+        display: none;
+        position: absolute;
+        padding: 10px;
+        right: 0;
+        top: 35px;
+        z-index: 99;
+        color: #666;
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+    }
+
+    .export-drop-content:hover .export-drop-list {
+        display: block
+    }
+
+    .export-drop-list input {
+        margin: 0
+    }
+
+    .filter-result-content .btr {
+        color: #055ec3
+    }
+
+    .range-slider .irs-with-grid .irs-grid {
+        display: none
+    }
+
+    .main-th {
+        width: 33%;
+    }
+
+    .unfold .main-th {
+        width: 183px;
+    }
+
+    .filter-item-title {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .keySearch-list-input .typeahead {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .keySearch-list-input .typeahead li {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .dropdown-menu {
+        padding: 0
+    }
+
+    .dropdown-menu li a {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    .dropdown-menu li a:hover, .dropdown-menu .active a, .dropdown-menu .active a:hover {
+        color: #055ec3
+    }
+
+    .clude-dropdown-content:hover .dropdown-menu {
+        display: block
+    }
+
+    .confirm-window {
+        border: 1px solid #ddd;
+        padding: 50px;
+        background: #fff;
+        position: absolute;
+        z-index: 99;
+        top: 40%;
+        left: 50%;
+        margin-left: -209px;
+    }
+
+    .confirm-window dl {
+        position: relative;
+    }
+
+    .confirm-window dt {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        margin-top: -15px;
+        color: #f9e574;
+        font-size: 25px;
+    }
+
+    .confirm-window dd {
+        margin-left: 35px;
+        width: 280px;
+    }
+
+    .confirm-window p {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        margin: 0;
+        text-align: right;
+    }
+
+    .confirm-window p a {
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    .confirm-window p a:last-child {
+        /*width: 70px;*/
+        padding: 0 10px;
+        height: 30px;
+        line-height: 30px;
+        background: #055ec3;
+        border-radius: 3px;
+        color: #fff;
+        text-align: center
+    }
+
+    .confirm-window p a:last-child:hover {
+        background: #3498db
+    }
+
+    .confirm-window .bt-times {
+        font-size: 12px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: #6e6e6e
+    }
+
+    .confirm-window .bt-times:hover {
+        color: #555555
+    }
+
+    .pagination .btn {
+        background: #f9fafb
+    }
+
+    #no-data-cont {
+        height: 600px;
+        position: relative;
+        padding-top: 110px;
+        box-sizing: border-box;
+    }
+
+
+    #no-data-cont .content {
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        top: 9px;
+        text-align: center;
+        font-size: 20px;
+
+    }
+
+    #no-data-cont .content p {
+        padding: 70px 70px 70px 105px;
+        width: 455px;
+        position: absolute;
+        left: 50%;
+        margin-left: -210px;
+        top: 40%;
+        background: #fff;
+        font-size: 14px;
+        text-align: left;
+    }
+
+    #no-data-cont .content .btr {
+        color: #f9e574;
+        position: absolute;
+        top: 50%;
+        left: 70px;
+        margin-top: -13px;
+        font-size: 25px;
+    }
+
+    .detailView .segment-name {
+        width: auto;
+    }
+
+    .row-fluid:before, .row-fluid:after {
+        display: table;
+        line-height: 0;
+        content: "";
+	    clear: both;
+	}
+	.filter-type-tab{
+        padding: 10px 20px 0;
+    }
+   .filter-type-tab label{
+       display: inline-block;
+       margin-right: 20px;
+   }
+   .filter-type-tab label input{
+       margin: -2px 5px 0 0;
+   }
+    .filter-list-tab-contact.disabled{
+        color:#a6acc0;
+        cursor:default;
+    }
+</style>
+
+<!--sidebar-menu-->
+
+
+
+<div class="p-v-sm m-t pos-rlt clear">
+    <h1 class="no-margin">
+        <div class="pull-left title-ico"><i class="ui-icon btr bt-magic"></i></div>
+        <div class="pull-left title-text">Demand Generation Filters</div>
+    </h1>
+</div>
+
+<div id="audience-body" class="m-t-md">
+
+
+    <div id="note-div" style="margin: 100px auto 5px 1.5%; display: none;"></div>
+    <div id="no-data-cont" style="display: none;">
+        <div class="bg"></div>
+        <div class="content">
+            <p><span class="text-xl pos-abt btr bt-exclamation-circle"></span>Please reach out to your sales contact to activate Predictive
+                Demand Generation.</p>
+        </div>
+
+    </div>
+    <div id="right-cont" style="width: auto;display: none;position:relative">
+        <div class="confirm-window js-confirm-window" style=" display:none; ">
+            <a href="javascript:;" class="btr bt-times js-close"></a>
+            <dl>
+                <dt><span class="esfont-exclamation-circle"></span></dt>
+                <dd>Are you sure you want to delete this Filter?</dd>
+            </dl>
+            <p>
+                <a href="javascript:;" class=" js-close">Cancel</a>
+                <a href="javascript:;" class="js-sure">Ok</a>
+            </p>
+        </div>
+        <div class="confirm-window js-confirm-window-export" style=" display:none; ">
+            <a href="javascript:;" class="btr bt-times js-close"></a>
+            <dl>
+                <dt><span class="esfont-exclamation-circle"></span></dt>
+                <dd>Are you sure you want to export sample data?</dd>
+            </dl>
+            <p>
+                <a href="javascript:;" class="js-close">Cancel</a>
+                <a href="javascript:;" class="js-sure">Generate Set</a>
+            </p>
+        </div>
+        <div id="real-content" class="" style="">
+
+
+        </div>
+        <div class="add-segment js-add-segment">
+            <span class="btr bt-plus-circle bt-3x"></span>
+            <h5>Add a Filter</h5>
+        </div>
+    </div>
+</div>
+<script id="keysTextareaTpl" type="text/x-jquery-tmpl">
+    {{~it:value:index }}
+    {{?value!=null}}
+    <span class="key-item js-key-item" ><span>{{=value.display}}</span> <a href="javascript:;" class="btr bt-times js-remove"></a></span>
+    {{?}}
+    {{~}}
+
+
+
+
+
+
+</script>
+<script id="resultTpl" type="text/x-jquery-tmpl">
+    <thead>
+        <tr class="alpha-tr">
+            <th style="width:auto;  padding: 0;"></th>
+            <th class="main-th" scope="col" style="text-align: center; padding-left: 0;">
+                <div style="position: relative;">
+                    <a class="title-sort grey"style="border: 0;" role="button">Company</a>
+                </div>
+            </th>
+            <th class="main-th" style="text-align: center;">
+                <div style="position: relative;">
+                    <a class="title-sort  grey" style="border: 0;"
+                    >Similar Co.</a>
+                </div>
+            </th>
+            <th class="main-th" style="text-align: center;">
+                <div style="position: relative;">
+                    <a class="title-sort  grey" style="border: 0;"
+                    >Score</a>
+                </div>
+            </th>
+            <th class="main-th" style="text-align: center;">
+                <div style="position: relative;">
+                    <a class="title-sort  grey" style="border: 0;" role="button"
+                    >Contacts</a>
+
+                </div>
+            </th>
+            <th style="width:auto; padding: 0;"></th>
+        </tr>
+    </thead>
+    <tbody id="">
+        {{for(var i=0,ii=it.companies.length<=10?it.companies.length:10;i<ii;i++){
+            var frimGraphics = it.companies[i].frimGraphics;
+            var similarCompanies = it.companies[i].similarCompanies;
+            var contacts = it.companies[i].contacts;
+            var detailHtml = '';
+            var similarHtml = '';
+            var contactHtml = '';
+            var address = frimGraphics.city?frimGraphics.city+", "+frimGraphics.state:frimGraphics.state;
+            var revenue = Number(frimGraphics.revenue);
+            frimGraphics.industry = frimGraphics.industry.match(/[\w]+/);
+            if(revenue > 1000){
+                revenue = "$"+(revenue/1000).formatMoney(1)+"M";
+            }else{
+                revenue = "$"+revenue.formatMoney(0)+"K";
+            }
+            detailHtml += "<tr><td style='width:20px'></td><td><div>Industry</div></td><td><p style='text-align:right' title='"+frimGraphics.industry+"'><strong>"+frimGraphics.industry+"</strong></p></td><td style='width:20px'></td></tr>";
+            detailHtml += "<tr><td style='width:20px'></td><td><div>Location</div></td><td><p style='text-align:right' title='"+address+"'><strong>"+address+"</strong></p></td><td style='width:20px'></td></tr>";
+            detailHtml += "<tr><td style='width:20px'></td><td><div>Employee Size</div></td><td><p style='text-align:right' title='"+frimGraphics.employees+"'><strong>"+Number(frimGraphics.employees).formatMoney(0)+"</strong></p></td><td style='width:20px'></td></tr>";
+            detailHtml += "<tr><td style='width:20px'></td><td><div>Revenue</div></td><td><p style='text-align:right' title='"+revenue+"'><strong>"+revenue+"</strong></p></td><td style='width:20px'></td></tr>";
+            similarHtml += "<h5><strong>Similar Companies: "+similarCompanies.length+"</strong></h5><table class='no-border' style='width:100%'>";
+            similarHtml += "<table class='no-border' style='width:100%'>";
+            for(var l=0,ll=similarCompanies.length;l<ll;l++){
+                similarHtml += "<tr><td style='width:20px'></td><td ><div style='width:100%;' title='"+similarCompanies[l]+"'><a href='http://www."+similarCompanies[l]+"' target='_blank'>"+similarCompanies[l]+"</a></div></td><td style='width:20px'></td></tr>";
+            }
+            similarHtml += "</table>";
+            contactHtml = '<h5><strong>Contacts: '+contacts.length+'</strong></h5>';
+            contactHtml += "<table class='no-border' style='width:100%'>";
+            contactHtml += contacts.length==0?'':"<tr><td style='width:20px'></td><td style='text-align:left;width:148px;'><strong>Title</strong></td>
+                <td colspan=2 style='width:77px;text-align:right'><strong>Verified</strong></td><td style='width:20px'></td></tr>";
+            for(var l=0,ll=contacts.length<=5?contacts.length:5;l<ll;l++){
+                var hasPhone = contacts[l].hasPhone?"<span class='btr bt-phone'> </span>":"";
+                var hasEmail = contacts[l].hasEmail?"<span class='btr bt-envelope'> </span>":"";
+                contactHtml += "<tr><td style='width:20px'></td><td><div style='width:128px;' title='"+contacts[l].title+"'>"+contacts[l].title+"</div></td><td style='text-align:right'>"+hasPhone+"</td>
+                    <td style='text-align:right'>"+hasEmail+"</td><td style='width:20px'></td></tr>";
+            }
+            contactHtml += '</table>';
+         }}
+        <tr class="indi-list js-result-tr-list"  style="display:none">
+            <td>
+            </td>
+            <td class="text-center es-popup domain" title='{{=frimGraphics.name}}'>
+                <a href="javascript:;"  class="link-pop" data-toggle="popover" data-placement="bottom" data-html="true"
+            data-content="<h5><strong>Company Details</strong></h5><table class='no-border' style='width:100%'>{{=detailHtml}} </table>"
+            >{{=frimGraphics.name}}</a>
+            </td>
+            <td class="text-center es-popup">
+                <a href="javascript:;" class="link-pop" data-toggle="popover" data-placement="bottom" data-html="true" style="font-weight:700;"
+            data-content="{{=similarHtml}}" title=""
+            >{{=similarCompanies.length}}</a>
+            </td>
+            <td class="text-center es-popup">
+                <a href="javascript:;" class="round"  style="font-weight:700;"
+            >{{=it.companies[i].fitScore}}</a>
+            </td>
+			{{? it.checkedVal == '1'}}
+				<td class="text-center  es-popup" ><a href="javascript:;" class="link-pop"  style="font-weight:700;"
+	             title=""
+	            data-original-title="">--</a>
+	            </td>
+			{{??}}
+	            <td class="text-center  es-popup" ><a href="javascript:;" class="link-pop" data-toggle="popover" data-placement="bottom" data-html="true" style="font-weight:700;"
+	            data-content="{{=contactHtml}}" title=""
+	            data-original-title="">{{=contacts.length}}</a>
+	            </td>
+			{{?}}
+            <td>
+            </td>
+        </tr>
+        {{ } }}
+    </tbody>
+
+
+
+
+
+
+
+
+</script>
+
+
+<script id="detailViewTpl" type="text/x-jquery-tmpl">
+
+    <div id="{{=it.getSegments?it.getSegments.id:''}}" class="detailView js-detailView" style="display:;">
+
+                <div class="row-fluid">
+                    <div class="np-width6 m-b-sm">
+
+                        <div class="realtime-edit-box">
+                            <input type="text"  maxlength="30" class="js-segment-name segment-name realtime-edit" style="box-sizing:content-box;font-size: 22px; height:28px; line-height: 28px; width: 114px;" value ="{{=it.getSegments?it.getSegments.name:''}}"placeholder="Audience Name"/>
+                            <span class="realtime-edit-icon muted"><i class="btr bt-pencil"> </i></span>
+                            <span class="js-segment-name-span" style="white-space: pre;font-size: 22px;width: auto;display:inline;visibility:hidden;position:absolute">{{=it.getSegments?it.getSegments.name:''}}</span>
+                        </div>
+                    </div>
+                    <div class="np-width6 m-b-sm">
+                        <a href="javascript:;" class="export-drop-content">
+                            <button class="js-export-btn export-btn" style="">
+                                Export Sample Data
+                            </button>
+                            <p class="js-export-drop-list export-drop-list" style="display:none">
+                                <label>
+                                    <input type="radio" name="export-{{=it.getSegments?it.getSegments.id:$('.js-detailView').length}}" checked value="1"/>
+                                    <span style="display:none" class="js-export-drop-item-text1">Without zoominfo calls</span>
+                                    <span style="display:none" class="js-export-drop-item-text2">Include in future exports</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="export-{{=it.getSegments?it.getSegments.id:$('.js-detailView').length}}" value="2"/>
+                                    <span style="display:none" class="js-export-drop-item-text1">With zoominfo calls</span>
+                                    <span style="display:none" class="js-export-drop-item-text2">Exclude from future exports</span>
+                                </label>
+                            </p>
+                        </a>
+
+                        <a href="javascript:;" class="btr bt-trash js-remove-segment" style="float:right; margin-right:10px;margin-top:7px; font-size:24px;">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row-fluid segment-content js-segment-content">
+                    <div class="np-width6 filter-list">
+						<div class="filter-type-tab">
+
+                             <label>
+                                <input class="js-filter-type" type="radio" name="filter-type-{{=it.getSegments?it.getSegments.id:$('.js-detailView').length}}"  value="1"/> Companies only
+                             </label>
+                             <label>
+                                <input class="js-filter-type" type="radio"  name="filter-type-{{=it.getSegments?it.getSegments.id:$('.js-detailView').length}}" value="2"/> Companies and Contacts
+                             </label>
+                        </div>
+                        <div class="filter-list-tab js-filter-list-tab">
+                            <a href="javascript:;" class="checked">Company</a>
+                            <a class="filter-list-tab-contact js-filter-list-tab-contact" href="javascript:;">Contact</a>
+                            <div style="display:none"><input type="checkbox" class="js-checkbox" checked="{{=it.getSegments?it.getSegments.company.hasContact:true}}"> Has Contacts</div>
+                        </div>
+                        <div class="filter-list-item js-filter-list-item" style="">
+                            <div class="check-list-content js-check-list-content">
+                                <h5 class="filter-item-title">Industry</h5>
+                                <ul class="check-list js-check-list">
+                                    <li class="js-check-list-li check-list-li">
+                                        <div>
+                                            <input type="checkbox" class="js-checkbox-all">
+                                            All
+                                        </div>
+                                    </li>
+                                    {{~it.getSegment.company.industry.allData:industriesValue:industriesIndex }}
+                                    {{?industriesValue.data!=null}}
+                                    <li class="js-check-list-li check-list-li">
+                                        <div title="{{= industriesValue.data.display }}">
+                                            <input type="checkbox" class="js-checkbox js-checkbox-parent" data-ishassub = {{=industriesValue.subItems.length>0?'1':'2'}} data-id="{{= industriesValue.data.id }}">
+                                            <span class="js-display">{{= $.trim(industriesValue.data.display)?industriesValue.data.display:'(Blank)' }}</span>
+                                            {{?industriesValue.subItems&&industriesValue.subItems.length>0}}
+                                            <a href="javascript:;">
+                                                <!-- esfont-arrow-up7 -->
+                                                <span class="btr bt-angle-up"></span>
+                                                <span class="btr bt-angle-down"></span>
+                                            </a>
+                                            {{?}}
+                                        </div>
+                                        {{?industriesValue.subItems&&industriesValue.subItems.length>0}}
+                                        <ul class="check-list-children js-check-list-children">
+                                            {{~industriesValue.subItems:subIndustiresValue:subIndustiresIndex }}
+                                            {{?subIndustiresValue!=null}}
+                                            <li class="js-check-list-children-li">
+                                                <div title="{{= subIndustiresValue.display }}"><input type="checkbox" class="js-checkbox" data-issub='1' data-id="{{= subIndustiresValue.id }}"> <span class="js-display">{{= subIndustiresValue.display }}</span></div>
+                                            </li>
+                                            {{?}}
+                                            {{~}}
+                                        </ul>
+                                        {{?}}
+                                    </li>
+                                    {{?}}
+                                    {{~}}
+                                </ul>
+                                <a href="javascript:;" class="show-all js-show-all">Show More</a>
+                            </div>
+                            <div class="check-list-content js-check-list-content">
+                                <h5 class="filter-item-title">Location</h5>
+                                <ul class="check-list js-check-list">
+                                    <li class="js-check-list-li check-list-li">
+                                        <div>
+                                            <input type="checkbox" class="js-checkbox-all">
+                                            All
+                                        </div>
+                                    </li>
+                                    {{~it.getSegment.company.state.allData:statesValue:statesIndex }}
+                                    {{?statesValue!=null}}
+                                        <li class="js-check-list-li check-list-li">
+                                            <div title="{{= statesValue.display }}"><input type="checkbox" class="js-checkbox" data-id={{=statesValue.id}}> <span class="js-display">{{= $.trim(statesValue.display)?statesValue.display:'(Blank)' }}</span></div>
+                                        </li>
+                                    {{?}}
+                                    {{~}}
+                                </ul>
+                                <a href="javascript:;" class="show-all js-show-all">Show More</a>
+                            </div>
+                            <ul class="range-slider js-range-slider">
+                                <li>
+                                    <h5 class="filter-item-title">Revenue</h5>
+                                    <p>
+                                        <input style="display:none" class="js-range-revenue" type="slider" name="price" value="" />
+                                    </p>
+                                </li>
+                                <li>
+                                    <h5 class="filter-item-title">Company Size</h5>
+                                    <p>
+                                        <input style="display:none" class="js-range-company-size" type="slider" name="price" value="" />
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="js-filter-list-item  filter-list-item filter-list-item-contacts "  style="display:none">
+                            <div class="keySearch-list-content">
+                                <h5 class="filter-item-title">Title</h5>
+                                <div class="keySearch-list-input js-keySearch-list-input" style="margin-bottom:20px; position: relative;">
+                                    <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                                    <input class="span2 ui-autocomplete-input js-keySearch-input" type="text" placeholder="e.g, CMO, CFO, Controller" style="width: 100%; padding: 6px 100px 6px 6px; height: 34px;"
+
+                                     autocomplete="off">
+                                    <div class="btn-group js-dropdown-content clude-dropdown-content" style="top:0;right:0;height:34px;position:absolute;z-index:99">
+                                        <button class="btn dropdown-toggle"   style="height:34px;"><span data-value='1' class="js-dropdown-toggle-text">Include</span> <span class="caret"></span></button>
+                                        <ul class="dropdown-menu js-dropdown-menu"  style="min-width:100%;">
+                                          <li><a href="javascript:;" data-value='1'>Included</a></li>
+                                          <li><a href="javascript:;" data-value='2'>Excluded</a></li>
+                                        </ul>
+                                    </div>
+                                    <ul class="keys-textarea js-keys-textarea">
+                                        <li>
+                                            <h5>Included:</h5>
+                                            <p>
+                                                {{?it.getSegments}}
+                                                {{~it.getSegments.contact.title.included:includeIdsValue:includeIdsIndex}}
+                                                {{?includeIdsValue!=null}}
+                                                <span class="key-item js-key-item" ><span>{{=includeIdsValue}}</span> <a href="javascript:;" class="btr bt-times js-remove"></a></span>
+                                                {{?}}
+                                                {{~}}
+                                                {{?}}
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <h5>Excluded:</h5>
+                                            <p>
+                                                {{?it.getSegments}}
+                                                {{~it.getSegments.contact.title.excluded:excludedIdsValue:excludedIdsIndex}}
+                                                {{?excludedIdsValue!=null}}
+                                                <span class="key-item js-key-item"><span>{{=excludedIdsValue}}</span> <a href="javascript:;" class="btr bt-times js-remove"></a></span>
+                                                {{?}}
+                                                {{~}}
+                                                {{?}}
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="check-list-content js-check-list-content">
+                                <h5 class="filter-item-title">Seniority</h5>
+                                <ul class="check-list js-check-list" style="height: auto;">
+                                    <li class="js-check-list-li check-list-li">
+                                        <div>
+                                            <input type="checkbox" class="js-checkbox-all">
+                                            All
+                                        </div>
+                                    </li>
+                                    {{~it.getSegment.contact.level.allData:levelValue:levelIndex}}
+                                    {{?levelValue!=null}}
+                                    <li class="js-check-list-li check-list-li">
+                                        <div title="{{= levelValue.display }}"><input type="checkbox" class="js-checkbox" data-id={{=levelValue.id}}> <span class="js-display">{{= $.trim(levelValue.display)?levelValue.display:'(Blank)' }}</span></div>
+                                    </li>
+                                    {{?}}
+                                    {{~}}
+                                </ul>
+
+                            </div>
+                            <div class="check-list-content js-check-list-content">
+
+                               <h5 class="filter-item-title">Job Function</h5>
+                                <ul class="check-list js-check-list">
+                                    <li class="js-check-list-li check-list-li">
+                                        <div>
+                                            <input type="checkbox" class="js-checkbox-all">
+                                            All
+                                        </div>
+                                    </li>
+                                    {{~it.getSegment.contact.function.allData:functionsValue:functionsIndex}}
+                                    {{?functionsValue!=null}}
+                                    <li class="js-check-list-li check-list-li">
+                                        <div title="{{= functionsValue.display }}">
+                                            <input type="checkbox" class="js-checkbox" data-id={{=functionsValue.id}}>
+                                         <span class="js-display">{{= $.trim(functionsValue.display)?functionsValue.display:'(Blank)' }}</span>
+                                         </div>
+                                    </li>
+                                    {{?}}
+                                    {{~}}
+                                </ul>
+                                <a href="javascript:;" class="show-all js-show-all">Show More</a>
+                            </div>
+                        </div>
+                        <div class="show-result js-show-result">
+                            Apply Audiences
+                        </div>
+                    </div>
+
+
+                    <div class="np-width6  filter-result-content">
+                        <div class="unfold-btn js-unfold-btn">
+                            <span class="ti-filter"></span>
+                            <span class="btr bt-angle-left"></span>
+                            <span class="btr bt-angle-right"></span>
+                        </div>
+                        <div class="issues issues-list ">
+                            <div class="match-number">
+                                <dl>
+                                    <dt>Number of leads generated, ranked by similarity to your good leads.</dt>
+                                    <dd>
+                                        <div>
+                                            <p class="es-blue" style=" height:20px;line-height:20px;"><strong class=" js-companies-num">0</strong></p>
+                                            <p>Companies</p>
+                                        </div>
+                                        <div>
+                                            <p class="es-blue" style=" height:20px;line-height:20px;"><strong class=" js-contacts-num">0</strong></p>
+                                            <p>Contacts</p>
+                                        </div>
+                                    </dd>
+                                </dl>
+
+
+                            </div>
+                            <table class="table table-condensed js-table-content" style="display:none;table-layout: fixed; min-width: 400px;">
+                            </table>
+                            <table class="table table-condensed js-tbody-loading" style="display:none;table-layout: fixed; min-width: 400px;">
+                                <tbody id="" class="" style=" border-top: 0;">
+                                    <tr>
+                                        <td colspan="4">
+                                        <div style=" padding:70px 0; text-align: center;">
+                                            <img src="images/loading.gif">
+                                        </div></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div id="" style="display:none" class="js-page-control pagination alternate clearfix">
+                                <div>
+                                <button class="btn btn-default" data-type="next">Next</button>
+                                <button class="btn btn-default" data-type="pre">Prev</button>
+                                </div>
+                            </div>
+                            <div class="info-input-content">
+                                <div class="info-input-content-child" style="">
+                                {{
+
+                                    var companyCount = it.getSegments?(it.getSegments.companyCount).formatMoney(0):'1,000';
+                                    var totalContact = it.getSegments?(it.getSegments.totalContact).formatMoney(0):'1,000';
+                                    var contactCount = it.getSegments?(it.getSegments.contactCount).formatMoney(0):'10';
+                                }}
+                                    <div class="info-input-item">
+                                        <dl>
+                                            <dt>Output Required</dt>
+                                            <dd>
+                                                <input type="text" class="js-company-count realtime-edit" value="{{? totalContact==0 }}{{=companyCount}}{{??}}{{=totalContact}}{{?}}">
+                                                <span class="realtime-edit-icon muted"><i class="btr bt-pencil"> </i></span>
+                                            </dd>
+                                            <dd class="js-dropdown-content">
+                                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" style=""><span data-value='{{? totalContact==0 }}1{{??}}2{{?}}' class="js-dropdown-toggle-text js-company-count-type">{{? totalContact==0 }}Companies{{??}}Contacts{{?}}</span> <span class="ti-angle-down"></span></a>
+												<a class="dropdown-toggle" style="display:none"><span data-value='1' class="js-company-count-type-disabled">Companies</span></a>
+                                                
+                                                <ul class="dropdown-menu js-dropdown-menu js-company-count-type-list"  style="width:100%;min-width:initial">
+                                                  <li><a href="javascript:;" data-value='1'>Companies</a></li>
+                                                  <li><a href="javascript:;" data-value='2'>Contacts</a></li>
+                                                </ul>
+                                            </dd>
+
+                                        </dl>
+
+
+                                    </div>
+                                    <div class="info-input-item">
+                                            <dt></dt>
+                                            <dd>
+                                                <input type="text" class="js-contact-count realtime-edit" value="{{=contactCount}}">
+												<input type="text" style="display:none" disabled=disabled class="js-contact-count-disabled realtime-edit" value="--">
+                                                
+                                                <span class="realtime-edit-icon muted"><i class="btr bt-pencil"> </i></span>
+                                            </dd>
+                                            <dd>Contacts / Company</dd>
+                                    </div>
+                                    <div class="info-input-item js-dropdown-content">
+                                            <dt> </dt>
+                                            <dd class="frequency js-frequency">
+                                                <div class="btn-group" >
+                                                    <button class="btn dropdown-toggle" data-toggle="dropdown" style=""><span ><strong data-value='2' class="js-dropdown-toggle-text  es-blue">2 Weeks</strong></span>
+                                                    <span class="btr bt-angle-down"></span></button>
+                                                    <ul class="dropdown-menu js-dropdown-menu"  style="">
+                                                      <li><a href="javascript:;" data-value='2'>2 weeks</a></li>
+                                                      <li><a href="javascript:;" data-value='4'>1 month</a></li>
+                                                      <li><a href="javascript:;" data-value='12'>3 months</a></li>
+                                                    </ul>
+                                                </div>
+                                            </dd>
+                                            <dd>Frequency</dd>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                </div>
+
+</div>

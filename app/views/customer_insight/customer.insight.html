@@ -1,0 +1,239 @@
+<div class="p-v-sm m-t pos-rlt clear">
+    <h1 class="no-margin">
+        <span class="pull-left title-ico"><i class="ui-icon btr bt-signal"></i></span>
+        <span class="pull-left title-text">Customer Insights</span>
+    </h1>
+</div>
+<div class="pos-rlt ">
+    <modalwarning ng-show="isReady" warning="warning"></modalwarning>
+
+    <div id="audience-body" class="m-t-md {{isReady?'es-gray':''}}">
+        <div class="panel panel-default panel-grey">
+            <div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row relative customer-insight {{isReady?'es-gray':''}}">
+
+        <div class="container-fluid content-tuchu" id="container-fluid">
+
+            <div id="note-div" style="margin: 100px auto 5px 1.5%; display: none;"></div>
+            <div id="right-cont" style="width: auto;">
+
+                <div id="real-content" class="" style="padding-bottom: 20px; overflow-x: hidden; min-height: 900px;">
+
+                    <div style="margin-right:-1.5%;">
+
+
+                        <div class="overflow-hidden">
+                            <div style="width: 48.5%; float: left; margin-right:1.5%;">
+                                <div class="pull-left">
+                                    <div class="card-label">Top Indicators by Category</div>
+                                </div>
+                                <div class="pull-right">
+                                    <div class="card-label" data-trigger="hover"
+                                         data-title="The likelihood that prospects with this characteristic are good prospects vs baseline."
+                                         bs-tooltip>
+                                        Overall Lift Multiple
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="uppercase" style="width: 48.5%; float: left;">
+                                <div class=" pull-left">
+                                    <div class="card-label">Top Indicators by Category</div>
+                                </div>
+
+                                <div class="pull-right">
+                                    <div class="card-label" data-trigger="hover"
+                                         data-title="The likelihood that prospects with this characteristic are good prospects vs baseline."
+                                         bs-tooltip>
+                                        Overall Lift Multiple
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div id="top10Area" class="m-t relative" style="min-height: 100px;">
+                            <loading ng-show="top10s.loading==true"></loading>
+                            <div ng-repeat="(key, value) in top10s.list" ng-if="!!value._id"
+                                 class="hastooltip" data-toggle="tooltip" role="button"
+                                 title=""
+                                 style="float:left;width: 48.5%; margin-left:0; margin-right:1.5%;margin-bottom: 23px; height:50px;"
+                                 ng-click="changeToCatAndScroll('{{value._id}}')"
+                                 data-original-title="{{value._id}}">
+                                <div class="clearfix catBigBtn"
+                                     ng-style="{'position': 'relative','border-left':'8px solid '+ top10Colors[key % top10Colors.length ]}">
+                                    <div class="" style=" height:50px;position:relative;">
+                                        <a href="#" data-toggle="tooltip" role="button" >
+                                            <div class="cat-bigicon industry"
+                                                 style="position:absolute;left:0;top:0;"></div>
+                                        </a>
+
+                                        <div class="data-text text-ellipsis" data-container="body"
+                                             data-title="{{value.displayValue}}" bs-tooltip
+                                             style=" height:50px;overflow:hidden;margin-left:20px;margin-right: 60px;">
+                                            {{value._id}} | <span class="card-minor">{{value.displayValue}}</span></div>
+                                    </div>
+                                    <div class="pull-right card-major text-primary"
+                                         style="position:absolute;top:0; right:16px;">
+                                        {{value.liftRateMultiple | number:1}}x
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div id="rateDetailView">
+                        <div class="issues issues-list ">
+
+                            <div class="" style="display: inline-block; position: relative; width: 100%;">
+
+                                <div class=" " style="padding: 5px 0 1px 0;">
+
+                                    <table style="">
+                                        <tr>
+                                            <td style="" id="noteFilterArea">
+
+                                                <!--<button type="button" class="btn btn-no-border"
+                                                        data-animation="am-flip-x" data-html="true"
+                                                        bs-dropdown="dropdown.list">Filter
+                                                </button>-->
+
+                                                <nav class="filter">
+                                                    <ul class="content clearfix">
+
+                                                        <li class="dropdown"><a class="uppercase" href="#"
+                                                                                style="padding: 1px 5px 1px 0; margin-left: 0px;">
+                                                            <span id="currentCat" class="text-black">FILTER</span>
+                                                            <span     class="label-arrow " >
+                                                                <span class="esfont-arrow-down7"></span></span></a>
+                                                            <ul class="sub-menu" id="catDropDownList">
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+
+                                            </td>
+
+                                            <td style="color:#aaa;">|</td>
+
+                                            <td id="catFilterBtn" style="width: 118px; ">
+                                                <form action="#" method="get" class="form-inline"
+                                                      style="float:left;margin-left:8px;">
+                                                    <div class="form-group">
+                                                        <span class="control-label uppercase text-black">SHOW </span>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="controls es-select">
+                                                            <select id="page-size" class="sel-status  sel-beauty"
+                                                                    style="width: 60px;" data-val="Contacted"
+                                                                    ng-model="indiList.filter.records_per_page"
+                                                            ng-change="indiList.getList()">
+
+                                                                <option value="20">20</option>
+                                                                <option value="50" selected="selected">50</option>
+                                                                <option value="100">100</option>
+                                                                <option value="200">200</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+                                                </form>
+                                            </td>
+                                            <td style="color:#aaa;">|</td>
+
+                                            <td style="width: 228px;">
+
+                                                <div class="flex-search">
+                                                    <span class="btr bt-search form-control-search"
+                                                          ng-click="indiList.getList($event)"></span>
+                                                    <span ng-click="indiList.filter.displayValue='';indiList.getList($event)"
+                                                          class="card-minor form-search-clear">&times;</span>
+                                                    <input type="text"
+                                                           ng-class="{'form-control rounded':true,'form-control-active':!!indiList.filter.displayValue}"
+                                                           ng-model="indiList.filter.displayValue"
+                                                           ng-keypress="($event.which === 13)?indiList.getList($event):0"/>
+                                                </div>
+
+
+                                            </td>
+
+
+                                        </tr>
+                                    </table>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="issues issues-list relative" style="min-height: 60px;">
+                            <loading ng-show="indiList.loading==true"></loading>
+                            <table class="table table-striped aligned-font">
+                                <thead>
+                                <tr>
+                                    <th ng-repeat="row in indiList.tableHeader" class="{{row.align}}">
+                                        <a href=""
+                                           ng-click="indiList.filter.sortKey = '{{row.dbkey}}';indiList.orderBy('{{row.dbkey}}', row.reverse);row.reverse=!row.reverse;">{{row.name}}
+                                            <i ng-show="indiList.filter.sortKey != '{{row.dbkey}}'" class="fa fa-sort"></i>
+                                            <i ng-show="indiList.filter.sortKey == '{{row.dbkey}}' && !row.reverse"
+                                               class="fa fa-sort-up"></i>
+                                            <span ng-show="indiList.filter.sortKey == '{{row.dbkey}}' && row.reverse"
+                                                  class="fa fa-sort-down"></span>
+                                        </a>
+                                    </th>
+                                </tr>
+                                </thead>
+
+                                <tbody >
+
+                                <tr ng-repeat="row in allListMerged" ng-class="{'sum-data':row.isSumData}">
+                                    <td style="width:18.5%;padding-left:15px;"><input type="hidden" value="{{row.id}}"/>{{row.signalCategory}}
+                                    </td>
+                                    <td style="width:22%">
+                                        <span ng-bind="row.displayValue || '&mdash;'"></span>
+                                    </td>
+                                    <td style="width:8%" class="text-right text-semibold"><span ng-bind="row.total|number"></span>
+                                    </td>
+                                    <td style="width:10%" class="text-right text-semibold"><span
+                                            ng-bind="row.payRate*100 | number:1"></span>%
+                                    </td>
+                                    <td style="width:10%" class="text-right text-semibold"><span
+                                            ng-bind="row.liftRateMultiple | number:1"></span>x
+                                    </td>
+                                    <td style="width:10%; padding-right:15px;" class="text-right text-semibold emphasis"><span
+                                            ng-bind="row.liftWC | number:1"></span>x
+                                    </td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+
+
+                            <ui-pagination config="indiList.pageInfo"/>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

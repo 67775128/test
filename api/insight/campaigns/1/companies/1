@@ -1,0 +1,258 @@
+{
+  "data": {
+    "aggregated_metrics": {
+      "clicks": 5001,
+      "days": 44,
+      "spend": 21.451231231,
+      "impressions": 1131546
+    },
+    "company": {
+      "address": "BD 10, Borel Ave, San Mateo, CA, US",
+      "create_time": "Wed, 10 Jun 2015 08:41:34 GMT",
+      "description": "it's a great company",
+      "domain": "theclineco.com",
+      "employee_size": "1000-5000",
+      "id": 2,
+      "industry": "Software",
+      "name": "The Cline Company",
+      "revenue": "$10000000",
+      "update_time": "Wed, 10 Jun 2015 08:41:34 GMT"
+    },
+    "daily_metrics": [
+      {
+        "clicks": 0,
+        "impressions": 26750,
+        "start_time": "Sun, 26 Apr 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 93,
+        "impressions": 24124,
+        "start_time": "Mon, 27 Apr 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 171,
+        "impressions": 22754,
+        "start_time": "Tue, 28 Apr 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 153,
+        "impressions": 34300,
+        "start_time": "Wed, 29 Apr 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 179,
+        "impressions": 32485,
+        "start_time": "Thu, 30 Apr 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 99,
+        "impressions": 16952,
+        "start_time": "Fri, 01 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 185,
+        "impressions": 24461,
+        "start_time": "Sat, 02 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 174,
+        "impressions": 33981,
+        "start_time": "Sun, 03 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 134,
+        "impressions": 22610,
+        "start_time": "Mon, 04 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 105,
+        "impressions": 15198,
+        "start_time": "Tue, 05 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 114,
+        "impressions": 33188,
+        "start_time": "Wed, 06 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 99,
+        "impressions": 28851,
+        "start_time": "Thu, 07 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 114,
+        "impressions": 28251,
+        "start_time": "Fri, 08 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 126,
+        "impressions": 24906,
+        "start_time": "Sat, 09 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 44,
+        "impressions": 26895,
+        "start_time": "Sun, 10 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 82,
+        "impressions": 16776,
+        "start_time": "Mon, 11 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 159,
+        "impressions": 23445,
+        "start_time": "Tue, 12 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 50,
+        "impressions": 20341,
+        "start_time": "Wed, 13 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 186,
+        "impressions": 33507,
+        "start_time": "Thu, 14 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 88,
+        "impressions": 16880,
+        "start_time": "Fri, 15 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 120,
+        "impressions": 27244,
+        "start_time": "Sat, 16 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 105,
+        "impressions": 12830,
+        "start_time": "Sun, 17 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 37,
+        "impressions": 26730,
+        "start_time": "Mon, 18 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 39,
+        "impressions": 33139,
+        "start_time": "Tue, 19 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 142,
+        "impressions": 19178,
+        "start_time": "Wed, 20 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 133,
+        "impressions": 13720,
+        "start_time": "Thu, 21 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 118,
+        "impressions": 26287,
+        "start_time": "Fri, 22 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 90,
+        "impressions": 33853,
+        "start_time": "Sat, 23 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 28,
+        "impressions": 21964,
+        "start_time": "Sun, 24 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 124,
+        "impressions": 22577,
+        "start_time": "Mon, 25 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 52,
+        "impressions": 25642,
+        "start_time": "Tue, 26 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 132,
+        "impressions": 34559,
+        "start_time": "Wed, 27 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 158,
+        "impressions": 17869,
+        "start_time": "Thu, 28 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 122,
+        "impressions": 30697,
+        "start_time": "Fri, 29 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 125,
+        "impressions": 22431,
+        "start_time": "Sat, 30 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 64,
+        "impressions": 38090,
+        "start_time": "Sun, 31 May 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 104,
+        "impressions": 24773,
+        "start_time": "Mon, 01 Jun 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 180,
+        "impressions": 30921,
+        "start_time": "Tue, 02 Jun 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 108,
+        "impressions": 26841,
+        "start_time": "Wed, 03 Jun 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 131,
+        "impressions": 21781,
+        "start_time": "Thu, 04 Jun 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 70,
+        "impressions": 21136,
+        "start_time": "Fri, 05 Jun 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 175,
+        "impressions": 35875,
+        "start_time": "Sat, 06 Jun 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 53,
+        "impressions": 28545,
+        "start_time": "Sun, 07 Jun 2015 00:00:00 GMT"
+      },
+      {
+        "clicks": 154,
+        "impressions": 28209,
+        "start_time": "Mon, 08 Jun 2015 00:00:00 GMT"
+      }
+    ],
+    "scores": {
+      "company_id": 2,
+      "control_group": 1,
+      "create_time": "Wed, 10 Jun 2015 16:41:34 GMT",
+      "engagement_score": -1,
+      "grade": "A",
+      "id": 2,
+      "intent_score": -1,
+      "score": 89,
+      "united_campaign_id": 1,
+      "update_time": "Wed, 10 Jun 2015 16:41:34 GMT"
+    }
+  },
+  "status": 200,
+  "statusInfo": ""
+}

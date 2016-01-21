@@ -1,0 +1,101 @@
+<div class="app-aside-inner affix-top" ng-mouseleave="startAsideCloseTimer()" bs-affix="" ng-click="app.settings.asideShrink=false"
+      style="position: absolute;">
+    <div class="app-aside-body ">
+        <nav ui-nav="">
+            <ul class="nav">
+                <li class="nav-lev-1" ui-sref-active="active">
+                    <button class="btn  btn-light" style="float:right;"
+                            ng-click="app.settings.asideShrink=true;$event.stopPropagation()"
+                            ng-show="!app.settings.asideShrink">
+                    <span class="pull-right text-muted">
+                        <i class="fa fa-chevron-left"></i>
+                    </span></button>
+                    <button class="btn  btn-light" ng-click="app.settings.asideShrink=false"
+                            ng-style="{'visibility':(app.settings.asideShrink?'visible':'hidden')}">
+                        <i class="icon  text-lg  btr bt-bars" style="font-size:22px;"
+                           ng-click="app.settings.asideShrink=false"></i>
+                    </button>
+                </li>
+                <li class="nav-lev-1" ui-sref-active="active">
+                    <a ui-sref="home">
+                        <i class="icon  text-lg  fa fa-home"></i>
+                        <span class="nav-label">Home</span>
+                    </a>
+                </li>
+                <li class="nav-lev-1" ui-sref-active="active">
+                    <a ui-sref="leadScoring">
+                        <i class="icon  text-lg  btr bt-signal"></i>
+                        <span class="nav-label">Predictive Scoring</span>
+                    </a>
+                </li>
+                <li class="nav-lev-1" ui-sref-active="active">
+                    <a ui-sref="demandGen">
+                        <i class="icon  text-lg  btr bt-magic"></i>
+                        <span class="nav-label">Predictive Demand Generation</span>
+                    </a>
+                </li>
+                <li class="nav-lev-1" ui-sref-active="active">
+                    <a ui-sref="ads">
+                        <span class="pull-right nav-pointer">
+                            <i class="fa fa-angle-right"></i>
+                        </span>
+                        <i class="icon text-lg fa fa-bullhorn"></i>
+                        <span class="nav-label">Predictive Ad Targeting</span>
+                    </a>
+                    <ul class="nav nav-sub nav-sm">
+                        <li class="nav-lev-2" ui-sref-active="active">
+                            <a ui-sref="ads.campaign.list">
+                                <b class="border-active"></b>
+                                <span class="menu-box">
+                                    <span class="nav-label">Campaign Overview</span>
+                                </span>
+                            </a>
+                        </li>
+                       <!--  <li class="nav-lev-2" ui-sref-active="active">
+                            <a ui-sref="ads.diagnosis.diagnosis">
+                                <b class="border-active"></b>
+                                <span class="menu-box">
+                                    <span class="nav-label">Diagnosis </span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-lev-2" ui-sref-active="active">
+                            <a ui-sref="ads.tracking">
+                                <b class="border-active"></b>
+                                <span class="menu-box">
+                                    <span class="nav-label">Tracking Code</span>
+                                </span>
+                            </a>
+                        </li> -->
+                        <li class="nav-lev-2" ui-sref-active="active">
+                            <a ui-sref="ads.visits.accounts">
+                                <b class="border-active"></b>
+                                <span class="menu-box">
+                                    <span class="nav-label">Insights</span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <li class="nav-lev-1" ng-click="showPixelModal()">
+                        <a>
+                            <i class="icon  text-lg" ng-hide="app.settings.asideShrink"></i>
+                            <span class="nav-label">PIXEL</span>
+                        </a>
+                    </li>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="app-aside-footer text-xs">
+        <nav ui-nav="">
+            <ul class="nav">
+                <li class="nav-lev-1" ui-sref-active="active">
+                    <a ui-sref="Contact">
+                        <i class="icon  text-lg  fa fa-life-ring"></i>
+                        <span class="nav-label">Contact Support</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

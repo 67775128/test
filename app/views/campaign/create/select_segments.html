@@ -1,0 +1,96 @@
+<div class="m-h-xs">
+    <div class="m-t-lg instruction"> Select or create segments (accounts to target) for your campaign. </div>
+
+    <div class="flexbox" style="padding-top:65px" ng-if="!shouldShowExistingSegment">
+        <div class="flex"></div>
+        <div class="flex panel panel-default campaign-segment-panel bg-white">
+            <div class="align-center">
+
+                <div class="instruction m-t-md"> Use Existing Segment </div>
+
+                <div class="action-icon-md">
+                    <i class="fa fa-list-ul"></i>
+                </div>
+                <button type="button" ng-click="showExistingSegment()" style="margin-top: 60px; margin-bottom: 25px" class="secondary-btn inline">Select</button>
+            </div>
+        </div>
+
+        <h2 class="m-h-md" style="margin-top:105px"> OR </h2>
+
+        <div class="flex panel panel-default campaign-segment-panel bg-white">
+            <div class="align-center">
+
+                <div class="instruction m-t-md"> Create New Segment </div>
+
+                <div class="action-icon-md">
+                    <i class="fa fa-plus"></i>
+                </div>
+
+               <button type="button" ng-click="showSegmentCreationModal()" style="margin-top: 60px; margin-bottom: 25px" class="secondary-btn inline">Create</button>
+
+            </div>
+        </div>
+        <div class="flex"></div>
+    </div>
+
+    <div class="flexbox" ng-if="shouldShowExistingSegment">
+        <div class="flex">
+            <div class="table-crud-row m-t-lg m-h-sm">
+                <div class="table-crud-text" ng-click="showSegmentCreationModal()">
+                    <i class="fa fa-plus-circle"></i>
+                    Create Segment
+                </div>
+                <div class="table-crud-text" ng-class="{disabled: segmentList.metrics.length === 0}">
+                    <i class="fa fa-minus-circle"></i>
+                    Delete
+                </div>
+                <div class="table-crud-text" ng-click="selectAllItems()">
+                    Select All
+                </div>
+            </div>
+            <div class="panel panel-default bg-white m-h-sm m-b-sm" style="position: relative;margin-top:10px;">
+                <loading ng-show="segmentList.loading"></loading>
+                <table class="table table-striped aligned-font">
+                    <thead>
+                    <tr>
+                        <th class="ng-binding"></th>
+                        <th ng-repeat="row in segmentList.tableHeader" class="{{row.align}}">
+                            <a ng-click="segmentList.sortKey = '{{row.dbkey}}'; segmentList.orderBy('{{row.dbkey}}', row.reverse);row.reverse=!row.reverse;">{{row.name}}
+                            <i ng-show="segmentList.sortKey != '{{row.dbkey}}'" class="fa m-h-xs fa-sort"></i>
+                            <i ng-show="segmentList.sortKey == '{{row.dbkey}}' && !row.reverse"
+                               class="fa m-h-xs fa-sort-up"></i>
+                            <span ng-show="segmentList.sortKey == '{{row.dbkey}}' && row.reverse"
+                                  class="fa m-h-xs fa-sort-down"></span>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-show="segmentList.metrics[0].name==''">
+                        <td class="text-left no-segment"> No Data - CREATE SEGMENT to begin tracking data.</td>
+                    </tr>
+                    <tr ng-hide="segmentList.hideTableEntryCond($index)" ng-repeat="row in segmentList.metrics">
+                        <td class="text-left">
+                            <div class="checkbox_vdl">
+                                <input ng-model="row.selected" type="checkbox" value="1" id="checkbox_vdlInput_{{segmentList.metrics.indexOf(row)}}" name="">
+                                <label for="checkbox_vdlInput_{{segmentList.metrics.indexOf(row)}}"></label>
+                            </div>
+                        </td>
+                        <td class="text-left" style="max-width:100px;"><div class="text-clip" >{{row.name}}</div></td>
+                        <td class="text-center text-clip">{{row.type}}</td>
+                        <td class="text-left text-clip" style="max-width:300px;" bs-tooltip data-title="{{row.url}}" data-template="views/tooltips/tooltip.url.html" data-container="body">{{ row.url }}</td>
+                        <td class="text-center text-clip">{{(row.duration | number:0) || 0}} days</td>
+                        <td class="text-center text-clip"> - </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="align-right p-v-lg m-t-lg">
+        <button type="button"  class="secondary-btn inline pull-left" ui-sref="ads.campaign.list">Cancel</button>
+        <button type="button"  class="secondary-btn inline m-r-lg" ui-sref="ads.campaign.create.campaign_settings">Back</button>
+        <button type="button"  class="target-btn inline" ui-sref="ads.campaign.create.choose_ads" ng-class="{disabled: selectedSegments === 0}" ng-disabled="selectedSegments === 0">Next</button>
+    </div>
+
+</div>

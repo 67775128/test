@@ -1,0 +1,88 @@
+<div class="app-aside-inner affix-top"
+     ng-mouseenter="cancelAsideCloseTimer()" ng-mouseleave="startAsideCloseTimer()">
+    <div class="app-aside-body ">
+        <nav ui-nav="">
+            <ul class="nav">
+                <li class="nav-lev-1" ui-sref-active="active">
+                    <button class="btn  btn-light" style="float:right;"
+                            ng-click="app.settings.asideShrink=true;$event.stopPropagation()"
+                            ng-show="!app.settings.asideShrink">
+                    <span class="pull-right text-muted">
+                        <i class="btr bt-angle-left"></i>
+                    </span></button>
+                    <button class="btn  btn-light" ng-click="app.settings.asideShrink=false"
+                            ng-style="{'visibility':(app.settings.asideShrink?'visible':'hidden')}">
+                        <i class="icon  text-lg  btr bt-bars" style="font-size:22px;"
+                           ng-click="app.settings.asideShrink=false"></i>
+                    </button>
+                    <div>
+                        <button type="button" class="js-segment-select btn btn-default" ng-controller="segmentSelecterCtrl"  ng-model="selectedSegment" data-html="1" bs-options="segment.name for segment in segments" bs-select>
+                            Action <span class="caret"></span>
+                        </button>
+                    </div>
+                </li>
+                <li ng-class="{active:$state.includes('predict'), 'nav-lev-1':true}">
+                    <a>
+                        <span class="pull-right text-muted">
+                          <i class="btr bt-angle-nav"></i>
+                        </span>
+                        <i class="icon  text-lg  btr bt-signal"></i>
+                        <span class="nav-label">Predictive Scoring</span>
+                    </a>
+                    <ul class="nav nav-sub bg">
+
+                        <li ui-sref-active="active" class="nav-lev-2">
+                            <a ui-sref="predict.model.result">
+                                <b class="border-active"></b>
+                                <span class="menu-box">
+                                    <span class="nav-label">Model Results</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" class="nav-lev-2">
+                            <a ui-sref="predict.customer.insight">
+                                <b class="border-active"></b>
+                                <span class="menu-box">
+                                    <span class="nav-label">Customer Insight</span>
+                                </span>
+                                </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+                <li class="nav-lev-1" ui-sref-active="active">
+                    <a>
+                        <span class="pull-right text-muted">
+                          <i class="btr bt-angle-nav"></i>
+                        </span>
+                        <i class="icon  text-lg  btr bt-magic"></i>
+                        <span class="nav-label">Predictive Demand Generation</span>
+                    </a>
+                    <ul class="nav nav-sub nav-sm">
+                        <li class="nav-lev-2" ui-sref-active="active">
+                            <a ui-sref="predict.demandGen.audience">
+                                <b class="border-active"></b>
+                                <span class="menu-box">
+                                    <span class="nav-label">Audience</span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="app-aside-footer text-xs">
+        <nav ui-nav="">
+            <ul class="nav">
+                <li class="nav-lev-1" ui-sref-active="active">
+                    <a href="../ls-web/es/support" target="_blank">
+                        <i class="icon  text-lg  fa fa-life-ring"></i>
+                        <span class="nav-label">Contact Support</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

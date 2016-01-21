@@ -1,0 +1,191 @@
+<div class="p-v-sm m-t pos-rlt clear">
+    <h1 class="no-margin">
+        <div class="pull-left title-ico"><i class="ui-icon fa fa-bullhorn"></i></div>
+        <div class="pull-left title-text">Insights over the last 30 days</div>
+    </h1>
+</div>
+
+<ul class="nav nav-tabs m-t-md" ui-nav="" id="my">
+    <li class="">
+        <a href="#/ads/visits/accounts">Accounts</a>
+    </li>
+    <li class="active">
+        <a href="#/ads/visits/people">People</a>
+    </li>
+</ul>
+
+<div class="row m-t-md my-tab">
+    <div class="col-sm-4">
+        <h2>Current Addressable Market</h2>
+        <div class="panel panel-default bg-white chart-people-visits" style="height:430px;">
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <h2>Engagement</h2>
+        <div class="panel panel-default bg-white chart-people-engagement" style="height:430px;">
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <h2>Predictive Addressable Market</h2>
+        <div class="panel panel-default bg-white " style="height:430px;">
+            <div class="chart-expansion">
+                <div class="chart-title">
+                    <div class='aligned-font'>We've expanded your Current Addressable Market based on your most highly
+                        engaged people.
+                    </div>
+                </div>
+                <div class="simple-bar m-t">
+                    <div class="simple-bar-title m-v-xs">
+                        Number of Highly Engaged People: {{engagementLevelAmounts.high}}
+                    </div>
+                    <div class="simple-bar-cont">
+                        <div class="bar-cont" style="width:{{sliderBarWidth()}}%;">
+                            <span class="m-r-xs" ng-if="sliderTextPositionLeft()">{{engagementLevelAmounts.high}}</span>
+                        </div>
+                        <div class="bar-label">
+                            <span class="m-l-xs" ng-if="sliderTextPositionRight()">{{engagementLevelAmounts.high}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="simple-bar m-t-lg">
+                    <div class="simple-bar-title m-v-xs">
+                        Predicted People Multiplier
+                        <div class="pull-right" style="opacity:{{(expansionFactor-1)/5}}">
+                            Quality Dilution
+                            <i class="fa fa-arrow-up"></i>
+                        </div>
+                    </div>
+                    <div class="simple-bar-cont">
+                        <div class="bar-cont"
+                             style="width:{{(expansionFactor-1)*25}}%;background-color:#666;">
+                            <span class="m-r-xs"
+                                  ng-if="expansionFactor>expansionFactorMax/2">{{expansionFactor}}x</span>
+                        </div>
+                        <div class="bar-label">
+                            <span class="m-l-xs"
+                                  ng-if="expansionFactor<=expansionFactorMax/2">{{expansionFactor}}x</span>
+                        </div>
+                    </div>
+                    <div class="es-slider-div"  >
+                        <input ng-model="expansionFactor"  type="text" id="mySlider1" slider options="sliderOptions" style="display:none;"/>
+                    </div>
+                </div>
+
+
+                <div class="align-center">
+                    <div class="panel b-a pos-rlt inline center m-v-sm">
+                        <div class="panel-body">
+                            Daily Budget
+                            <div>${{expansionFactor | number : 1}}K</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="align-center m-t-sm">
+                    <button type="button" class="target-btn inline m-h-lg" ng-click="showModal(1)">Create Segment
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <h2>Top Pages</h2>
+        <div class="table-crud-row">
+            <div class="table-crud-text" ng-click="showModal(2)">
+                <i class="fa fa-plus-circle"></i>
+                Create Segment
+            </div>
+        </div>
+        <div class="panel panel-default bg-white m-b-sm" style="position: relative;">
+            <loading ng-show="pageList.loading==true"></loading>
+            <table st-table="pageList.compList" class="table table-striped aligned-font">
+                <thead>
+                <tr>
+                    <th ng-repeat="row in pageList.tableHeader" class="{{row.align}}">
+                        <a href="">{{row.name}}
+                        </a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-show="pageList.metrics[0].name==''">
+                    <td class="text-left no-segment"> No Data - CREATE SEGMENT to begin tracking data.</td>
+                </tr>
+                <tr ng-hide="pageList.metrics[0].name=='' || $index>=5" ng-repeat="row in pageList.metrics">
+                    <td class="text-left text-clip" style="width:20%;max-width:0;">{{row.name}}</td>
+                    <td class="text-left text-clip" style="width:20%;max-width:0;" bs-tooltip data-title="{{row.url}}" data-template="views/tooltips/tooltip.url.html" data-container="body">{{row.url}}</td>
+                    <td class="text-center" style="padding-top:1px;padding-bottom:1px;">{{ row.total_visits }}
+                    </td>
+                    <td class="text-center">{{(row.avg_time_on_page | number:0) || 0}}</td>
+                    <td class="text-center"> {{row.conversion==1?'Y':'N'}}</td>
+                    <td class="text-center">
+                        <es-ratio-bar config="row.scoresArr"/>
+                    </td>
+                    <td class="text-right">{{row.new_visits | number:0}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+        <div class="text-center text-small"><span class="p-h-sm">Measured In Seconds</span><span class="p-h-sm"><i
+                class="fa fa-circle grade-a"></i>11+</span>
+            <span class="p-h-sm"><i class="fa fa-circle grade-b"></i>1 - 10</span>
+            <span class="p-h-sm"><i class="fa fa-circle grade-c"></i>0 (bounce)</span>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel-heading-left0 m-b-sm">Top Events</div>
+        <div class="table-crud-row">
+            <div class="table-crud-text" ng-click="showModal(3)">
+                <i class="fa fa-plus-circle"></i>
+                Create Segment
+            </div>
+        </div>
+        <div class="panel panel-default bg-white" style="position: relative;">
+            <loading ng-show="eventList.loading==true"></loading>
+            <table st-table="eventList.compList" class="table table-striped aligned-font">
+                <thead>
+                <tr>
+                    <th ng-repeat="row in eventList.tableHeader" class="{{row.align}}">
+                        <a href=""
+                           ng-click="eventList.sortKey = '{{row.dbkey}}'; eventList.orderBy('{{row.dbkey}}', row.reverse);row.reverse=!row.reverse;">{{row.name}}
+                             <i ng-show="eventList.sortKey != '{{row.dbkey}}'" class="fa fa-sort"></i>
+                            <i ng-show="eventList.sortKey == '{{row.dbkey}}' && !row.reverse"
+                               class="fa fa-sort-up"></i>
+                            <span ng-show="eventList.sortKey == '{{row.dbkey}}' && row.reverse"
+                                  class="fa fa-sort-down"></span>
+                        </a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-show="eventList.metrics[0].name==''">
+                    <td class="text-left no-segment"> No Data - CREATE SEGMENT to begin tracking data.</td>
+                </tr>
+                <tr ng-hide="eventList.metrics[0].name==''" ng-repeat="row in eventList.metrics">
+
+
+                    <td class="text-left">{{row.domain}}</td>
+                    <td class="text-center">{{row.page_view | number:0}}</td>
+                    <td class="text-center">{{(row.stay/60 | number:0) || 0}}</td>
+                    <td class="text-center"><i
+                            class="icon-right glyphicon {{row.visits==1?'glyphicon-ok':' glyphicon-remove'}}"></i></td>
+                    <td class="text-center">{{row.visits | number:0}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+</div>

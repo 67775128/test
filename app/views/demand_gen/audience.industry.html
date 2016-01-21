@@ -1,0 +1,158 @@
+<div class="aside demand-aside industry-aside" tabindex="-1" role="dialog" >
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-rounded btn-primary" ng-click="$hide()" id="btn-close">CLOSE</button>
+
+                        <h2 class="m-t-lg m-b-md"><i class="ui-icon btr bt-magic m-r"></i>Industry Categories: {{filteredCompanyCount  | number:0}} companies</h2>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="head table-crud-row">
+                                    <div class="table-crud-text">
+                                        <a href="javascript:void(0)" ng-click="audience.company.industry.excludeAll()">Exclude All</a>
+                                    </div>
+                                    <div class="table-search">
+                                        <span class="btr bt-search form-control-search"
+                                              ng-click="clickSearchIcon($event)"></span>
+                                        <span ng-click="clearKey('includeKeyWord');" class="fa fa-close form-search-clear"></span>
+                                        <input type="text"
+                                               ng-class="{'form-control rounded':true,'form-control-active':!!includeKeyWord}"
+                                               ng-model="includeKeyWord">
+                                    </div>
+                                </div>
+                                <div class="block" ng-style="audience.company.industry.dragging == 'included' ? {'z-index':100}:{'z-index':99}">
+                                    <h3>Included</h3>
+                                    <p class="b1">
+                                        <span>INDUSTRIES</span>
+                                        <span class="pull-right">LIFT MULTIPLE</span>
+                                    </p>
+                                    <div class="company m-t" ng-repeat="(key, obj) in industries"
+                                         ng-if="obj.included"
+                                         ng-drag="true"
+                                         ng-drag-data='obj'
+                                         ng-drag-start="audience.company.industry.onDragStart('included')">
+                                        <button class="btn btn-icon action-arrow" ng-click="audience.company.industry.toggleInclude(obj.name)">
+                                            <i class="fa fa-angle-double-right"></i>
+                                        </button>
+                                        <div class="top p"
+                                             ng-drop-success="audience.company.industry.onDropComplete($data,$event,'included',obj)"
+                                             ng-drop="true">
+                                            <div class="row">
+                                                <div class="col-sm-8">
+                                                    <span>{{obj.name}}</span><br />
+                                                    <span>{{obj.num | number:0}} Companies</span>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <a href="">{{obj.liftRateMultiple | number:1}}x</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-class="{'toggle p-xs': !obj.expanded,'toggle p-xs disabled': obj.expanded}"
+                                             ng-click="audience.company.industry.toggle(obj.name)">
+                                            <span ng-show="obj.subItems.length==0">No Sub-categories</span>
+                                            <span ng-show="obj.subItems.length>0">
+                                                {{obj.subItems | sumArrChecked}}/{{obj.subItems.length}} sub-categories Selected</span>
+                                            <i class="fa fa-angle-up"
+                                               ng-class="{'fa': true,
+                                               'fa-angle-down': !obj.expanded,
+                                               'hide': !obj.subItems,
+                                               'fa-angle-up':obj.expanded}"></i>
+                                        </div>
+                                        <div class="bottom p-xs" ng-show="obj.expanded">
+                                            <div class="checkbox" ng-repeat="(key2,item) in obj.subItems">
+                                                <label class="ui-checks">
+                                                    <input type="checkbox" value=""  ng-model="industries[key].subItems[key2].checked"
+                                                            ng-click="audience.company.industry.toggleSubIndustry('{{item.display}}',{{key}}); audience.company.industry.updateData()">
+                                                    <i></i>
+                                                    {{item.display}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="company m-t" ng-show="!filter(false).length">
+                                        <div class="top p"
+                                             ng-drop-success="audience.company.industry.onDropComplete($data,$event,'included')"
+                                             ng-drop="true">Drag from right box</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="head table-crud-row">
+                                    <div class="table-crud-text">
+                                        <a href="javascript:void(0)" ng-click="audience.company.industry.includeAll()">Include All</a>
+                                    </div>
+                                    <div class="table-search">
+                                        <span class="btr bt-search form-control-search"
+                                                ng-click="clickSearchIcon($event)"></span>
+                                        <span ng-click="clearKey('excludeKeyWord');" class="fa fa-close form-search-clear"></span>
+                                        <input type="text"
+                                               ng-class="{'form-control rounded':true,'form-control-active':!!excludeKeyword}"
+                                               ng-model="excludeKeyword">
+                                    </div>
+                                </div>
+                                <div class="block" ng-style="audience.company.industry.dragging == 'excluded' ? {'z-index':100}:{'z-index':99}">
+                                    <h3>Excluded</h3>
+                                    <p class="b1">
+                                        <span>INDUSTRIES</span>
+                                        <span class="pull-right">LIFT MULTIPLE</span>
+                                    </p>
+                                    <div class="company m-t" ng-repeat="(key, obj) in industries"
+                                         ng-if="!obj.included"
+                                         ng-drag="true"
+                                         ng-drag-data='obj'
+                                         ng-drag-start="audience.company.industry.onDragStart('excluded')">
+                                        <button class="btn btn-icon action-arrow" ng-click="audience.company.industry.toggleInclude(obj.name)">
+                                            <i class="fa fa-angle-double-left"></i>
+                                        </button>
+                                        <div class="top p"
+                                             ng-drop-success="audience.company.industry.onDropComplete($data,$event,'excluded',obj)"
+                                             ng-drop="true">
+                                            <div class="row">
+                                                <div class="col-sm-8">
+                                                    <span>{{obj.name}}</span><br />
+                                                    <span>{{obj.num | number:0}} Companies</span>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <a href="">{{obj.liftRateMultiple | number:1}}x</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-class="{'toggle p-xs': !obj.expanded,'toggle p-xs disabled': obj.expanded}"
+                                             ng-click="audience.company.industry.toggle(obj.name)">
+                                            <span ng-show="obj.subItems.length==0">No Sub-categories</span>
+                                            <span ng-show="obj.subItems.length>0">
+                                                {{obj.subItems | sumArrChecked}}/{{obj.subItems.length}} sub-categories Selected</span>
+                                            <i class="fa fa-angle-up"
+                                               ng-class="{'fa': true,
+                                               'fa-angle-down': !obj.expanded,
+                                               'hide': !obj.subItems,
+                                               'fa-angle-up':obj.expanded}"></i>
+                                        </div>
+                                        <div class="bottom p-xs" ng-show="obj.expanded">
+                                            <div class="checkbox" ng-repeat="(key2,item) in obj.subItems">
+                                                <label class="ui-checks">
+                                                    <input type="checkbox" value="" ng-model="item.checked"
+                                                           ng-click="audience.company.industry.updateData()">
+                                                    <i></i>
+                                                    {{item.display}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="company m-t" ng-show="!filter(false).length">
+                                        <div class="top p"
+                                             ng-drop-success="audience.company.industry.onDropComplete($data,$event,'excluded')"
+                                             ng-drop="true">Drag from left box</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

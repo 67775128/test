@@ -1,0 +1,37 @@
+<div class="aside demand-aside location-aside" tabindex="-1" role="dialog">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-rounded btn-primary" ng-click="$hide()" id="btn-close">CLOSE</button>
+
+                        <h2 class="m-t-lg m-b-md"><i class="ui-icon btr bt-magic m-r"></i>Job Function Categories: {{filteredContactCount | number:0}} contacts</h2>
+                        <div class="wrapper-search">
+                            <div class="table-crud-row m-t">
+                                <div class="table-search">
+                                    <span class="btr bt-search form-control-search"></span>
+                                    <span ng-click="clearKey();" class="fa fa-close form-search-clear"></span>
+                                    <input type="text"
+                                           class="form-control rounded"
+                                           ng-model="keyword">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wrapper">
+                            <div class="row">
+                                <div class="col-xs-3 col-lg-2 col" ng-repeat="(key,value) in jobFunctions">
+                                    <div ng-class="{'indicator-box location-item':true,'block area': true,'selected': value.checked}"
+                                         ng-click="audience.contact.function.toggleArea(value.id)">
+                                        <div class="name item-name" bs-tooltip="tooltip" title="{{value.name}}">{{value.name || '(Blank)'}}</div>
+                                        <div>{{value.num | number:0}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

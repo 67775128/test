@@ -1,0 +1,11 @@
+{
+    "status": 200,
+    "statusInfo": "",
+    "data": {
+        "spend": 565656,
+        "remaining": 23232,
+        "cpc": 23,
+        "cac": 13,
+        "convRate": 0.13
+    }
+}
