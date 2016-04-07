@@ -1,0 +1,74 @@
+// Outer container
+.progress {
+  overflow: hidden;
+  height: 8px;
+}
+
+// Bar of progress
+.progress-bar {
+  float: left;
+  width: 0;
+  height: 100%;
+  font-size: 12px;
+  line-height: 6px;
+  color: #dcdcdc;
+  text-align: center;
+}
+
+.progress-bar-common{
+  background: #59a2df;
+}
+
+.progress-simple{
+  height: 10px;
+  box-sizing: border-box;
+  border: 1px solid #d5d8d9;
+  overflow: hidden;
+  border-radius: 5px;
+  padding: 1px;
+  .progress-bar{
+    background: #6f9bf6;
+
+    -webkit-transition:none;
+    transition:none;
+    &:first-child{
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+    &:last-child{
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+  }
+}
+
+.progress-status{
+  height: 6px;
+  background: #dfdfdf;
+  overflow: hidden;
+  .progress-bar{
+    -webkit-transition: width 500ms;
+    transition: width 500ms;
+  }
+  .progress-bar-application{
+    background: #59a2df;
+  }
+  .progress-bar-picture{
+    background: #f6893e;
+  }
+  .progress-bar-music{
+    background: #8fcc54;
+  }
+  .progress-bar-books{
+    background: #c675bb;
+  }
+  .progress-bar-others{
+    background: #3dc5a9;
+  }
+  .progress-bar-available{
+    background: #dfdfdf;
+  }
+  .progress-bar-system-useage{
+    background: #59a2df;
+  }
+}

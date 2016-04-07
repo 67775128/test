@@ -1,0 +1,11 @@
+<div class="dialog-uninstall">
+    {{#if start}}
+    <p>{{title}}</p>
+    <a href="#" title="Delete" class="btn btn-warn delete">OK</a>
+    <a href="#" title="Cancel" data-dismiss="dialog" class="btn btn-simple cancel">Cancel</a>
+    {{/if}}
+    {{#if deleting}}
+        <p>{{title}}</p>
+        <div class="process-wrap"></div><div class="num-ctn" style="display:none;width:15%;"><span class="current-sp"></span>/<span class="total-sp"></span></div>
+    {{/if}}
+</div>

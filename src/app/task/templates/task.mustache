@@ -1,0 +1,15 @@
+<div class="task-toolbar toolbar">
+    {{> toolbar}} {{! toolbar.mustache}}
+</div>
+<div class="task-content tab-with-grid">
+    <ul class="tab-nav">
+        <li class="active"><a href="#" data-toggle="tab" data-target=".tab-process-apps" class="process-apps">{{i18n "task.process"}} (<em class="num">0</em>)</a></li>
+        <li><a href="#" data-toggle="tab" data-target=".tab-completed-apps" class="completed-apps">{{i18n "task.completed"}} (<em class="num">0</em>)</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane tab-process-apps tab-pane-animate-left active"></div>
+        <div class="tab-pane tab-completed-apps tab-pane-animate-right"></div>
+    </div>
+</div>
+<div class="task-blank"></div>
+

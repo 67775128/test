@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html debug="true">
+<head>
+    <meta charset="UTF-8">
+    <title>Mobogenie IOS</title>
+    <!--@require common:libs/MGWindow-->
+    <!--STYLE_PLACEHOLDER-->
+    <script src="../bower_components/requirejs/require.js"></script>
+    <script>
+        requirejs.jsExtRegExp = /^\/|:\/\/|\?/;
+        require.config({
+            urlArgs : "bust=" + (new Date()).getTime()
+        });
+    </script>
+    <!--RESOURCEMAP_PLACEHOLDER-->
+</head>
+<body>
+<div id="viewport" class="i-viewport"></div>
+<script type="text/javascript">
+
+    if(window.MGWebKit){
+        if(!MGWebKit.wnd){
+            MGWebKit.wnd = new MGWindow();
+        }
+        MGWebKit.wnd.onLoad = function(){
+            // 设置窗口大小和位置
+            var wnd = MGWebKit.wnd;
+            wnd.x = 100;
+            wnd.y = 100;
+            wnd.cx = 980;
+            wnd.cy = 720;
+            wnd.title = 'iGenie';
+            wnd.show(MGWndStatus.center);
+            require(['common:libs/MGWindow'],function(cef){
+                window.SocketURL = 'http://192.168.95.2:1900';
+                cef.server.init();
+            });
+        };
+    }
+</script>
+</body>
+</html>

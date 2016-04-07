@@ -1,0 +1,38 @@
+.close {
+  float: right;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 1;
+  color: #fff;
+  opacity:1;
+  &:hover,
+  &:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  // Additional properties for button version
+  // iOS requires the button element instead of an anchor tag.
+  // If you want the anchor version, it requires `href="#"`.
+  button& {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    -webkit-appearance: none;
+    outline: none;
+  }
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

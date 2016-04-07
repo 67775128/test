@@ -1,0 +1,44 @@
+<div class="i-screenshot">
+    <div class="i-name">
+        <input readonly class="device-name" type="text" />
+        <button class="edit-name">Edit</button>
+        <button class="btn btn-simple confirm-name">Confirm</button>
+    </div>
+</div>
+<div class="i-system">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active"><a draggable="false" data-toggle="tab" data-target=".tab-device-pane" class="system-tab-device" href="#"><span></span>My Device</a></li>
+        <li><a draggable="false" data-toggle="tab" data-target=".tab-must-pane" class="system-tab-must" href="#"><span></span>Editor's Pick</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane tab-device-pane active">
+            <div class="i-device"></div>
+            <div class="i-disk"></div>
+        </div>
+        <div id="i-must-have" class="tab-pane tab-must-pane i-must-have">
+            <div class="must-have-app">
+                {{!App Count}}
+                <p><span class="app-count"></span> Apps you must have</p>
+                <ul class="must-have-app-list"></ul>
+                {{!Loading}}
+                <div class="must-have-app-loading"></div>
+                <div class="must-have-app-none"></div>
+            </div>
+            <div class="must-have-game">
+                {{!Game Count}}
+                <p><span class="game-count"></span> Games you must have</p>
+                {{!Loading}}
+                <div class="must-have-game-loading"></div>
+                <ul class="must-have-game-list"></ul>
+                <div class="must-have-game-none"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<ul class="i-mainmenu">
+    <li><a draggable="false" class="mainmenu-repair i-btn-repair" href="#" {{i18n-attr "title" "viewport.fix_crash"}}>{{i18n "viewport.fix_crash"}}</a></li>
+    <li><a draggable="false" class="mainmenu-freedown" href="#lang/english/resource/app/home" title="Free Dowload">Free Download</a></li>
+    <li><a draggable="false" class="mainmenu-manage" href="#lang/english/app" title="Manage Apps">Manage Apps</a></li>
+    <li><a draggable="false" class="mainmenu-must" href="#lang/english/resource/app/musthave" title="Must Have">Must Have</a></li>
+    {{! <li><a draggable="false" class="mainmenu-genie" href="#" title="iGenie for iOS">iGenie for iOS</a></li> }}
+</ul>

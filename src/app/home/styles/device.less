@@ -1,0 +1,37 @@
+@import "app/common/styles/mixins/clearfix.less";
+.i-device{
+  padding: 20px 30px 0px;
+  ul{
+    .clearfix();
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #c5c0bd;
+    li{
+      float: left;
+      font-size: 14px;
+      color: #9a9a9a;
+      width: 205px;
+      height: 50px;
+      line-height: 50px;
+      em{
+        font-size: 14px;
+        font-style: normal;
+        color: #222;
+        margin-left: 18px;
+        &.color{
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          background: white;
+          border: 1px solid #e0dedf;
+          margin-bottom: -3px;
+        }
+      }
+    }
+  }
+  .more-detail{
+    width: 102px;
+  }
+}

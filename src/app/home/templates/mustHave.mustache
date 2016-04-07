@@ -1,0 +1,11 @@
+{{#each data}}
+    <li class="must-have-app-item">
+        <div class="app-icon-wrap">
+            <img draggable="false" class="app-icon" src="{{../getIconPath}}" title="{{name}}"/>
+        </div>
+        <a draggable="false" href="#" class="app-download" data-ipaid="{{ipaId}}" data-icon="{{../getIconPath}}" data-name="{{name}}" data-download="app">
+            <span class="app-title">{{name}}</span>
+            <span class="down-title">Install</span>
+        </a>
+    </li>
+{{/each}}

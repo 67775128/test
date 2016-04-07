@@ -1,0 +1,26 @@
+{{#if stepOne}}
+<div class="repair-flash">
+    <p class="repair-tip-start">Fix the problem if the apps you downloaded crash or require Apple ID. Are you sure you want to fix now?</p>
+    <div class="dialog-footer">
+        <a draggable="false" href="#" class="btn btn-deep repair-flash-btn">OK</a>
+        <a draggable="false" href="#" data-dismiss="dialog" class="btn btn-light">Cancel</a>
+    </div>
+</div>
+{{/if}}
+{{#if stepTwo}}
+<div class="repair-flash">
+    <p class="repair-tip-process">It may take a few minutes to fix crash. Please keep your device connected.</p>
+</div>
+{{/if}}
+{{#if stepThree}}
+<div class="repair-flash">
+    {{#if isSuccess}}
+        <p class="repair-tip-success">Fix successfully.</p>
+    {{else}}
+        <p class="repair-tip-fail">Failed to fix crash, please try again later.</p>
+    {{/if}}
+    <div class="dialog-footer">
+        <a draggable="false" href="#" data-dismiss="dialog"  class="btn btn-deep">OK</a>
+    </div>
+</div>
+{{/if}}

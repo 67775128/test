@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html debug="true">
+<head>
+    <meta charset="UTF-8">
+    <title>Mobogenie IOS</title>
+    <!--STYLE_PLACEHOLDER-->
+    <script src="../bower_components/requirejs/require.js"></script>
+    <!--@require common:main.less-->
+    <!--@require home:detail.view-->
+    <!--@require common:libs/cefAPI-->
+    <!--RESOURCEMAP_PLACEHOLDER-->
+</head>
+<body>
+<div id="detail-dialog">
+    <div class="i-detail-dialog">
+        <div class="detail-content">
+            <div class="detail-header">
+                <h4 class="detail-title" id="myModalLabel">Device Information</h4>
+                <button type="button" class="close" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="detail-body">
+            </div>
+            <div class="detail-footer">
+                <button type="button" class="btn btn-default copy-to-clipboard">Copy to Clipboard</button>
+                <button type="button" class="btn btn-primary open-in-notepad">Open in Notepad</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    if(!MGWebKit.wnd){
+        MGWebKit.wnd = new MGWindow();
+    }
+    MGWebKit.wnd.onLoad = function(cfg){
+        var wnd = MGWebKit.wnd;
+        wnd.x = 0;
+        wnd.y = 0;
+        wnd.cx = 600;
+        wnd.cy = 550;
+        wnd.title = 'Device Information';
+        wnd.show(MGWndStatus.center);
+        //Only Hack
+        //        var hash = location.hash.replace('#','');
+        requirejs.jsExtRegExp = /^\/|:\/\/|\?/;
+        require.config({
+            urlArgs : "bust=" + (new Date()).getTime()
+        });
+        require(['common:libs/cefAPI','home:detail.view'],function(cefAPI,DetailView){
+            cefAPI.factory();
+            cefAPI.deviceID = cfg.context;
+            new DetailView();
+        });
+    }
+</script>
+</body>
+</html>

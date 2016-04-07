@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html debug="true">
+<head>
+    <meta charset="UTF-8">
+    <title>Mobogenie IOS</title>
+    <script src="../vendor/mod.js"></script>
+    <script src="app/tools/views/clean.view.js"></script>
+    <!--@require common:main.less-->
+    <!--require tools:clean.less-->
+</head>
+<body>
+<div id="clean-dialog">
+    <div class="i-clean-dialog">
+        <div class="clean-content">
+        	<img src="../app/tools/images/clean/clean-bg.png" />
+        	<div class="clean-header">
+        		PC Cleaner
+        		<span class="icon icon-middle icon-close"></span>
+        	</div>
+        	<div class="clean-hbody">
+        		<div class="clean-an">
+        			<p class="scan-f"></p>
+        			<p class="scan-bg"></p>
+        			<p class="scan-fly animation rotateIn"></p>
+        		</div>
+        		<div class="clean-info">
+        			<p class="title"><span class="size">88.32</span><span class="mb">MB</span></p>
+        			<p class="pro">
+        				<span></span>
+        			</p>
+        			<button class="clean-btn">clean</button>
+        			<p class="path">C:\users\zhangyangyang\AppData\Local\Windows\Explorer\ thum bca</p>
+        			
+        		</div>
+        	</div>
+        </div>
+        <div class="clean-main">
+    		<div class="clean-title">
+    			<input type="checkbox" />
+    			<p class="project"><b></b><span>project</span></p>
+    			<p class="num"><b></b><span>Number</span></p>
+    			<p class="size"><b></b><span>Size</span><b></b></p>
+    		</div>
+    		<div class="clean-list">
+    			<ul>
+    				<li class="lins">
+    					<input type="checkbox" />
+    					<dl>
+    						<dt></dt>
+    						<dd><span>临时文件</span>应用程序处理和计算时产生的垃圾</dd>
+    					</dl>
+    					<p class="number">0</p>
+    					<p class="size">0B</p>
+    				</li>
+    				<li class="footCook">
+    					<input type="checkbox" />
+    					<dl>
+    						<dt></dt>
+    						<dd><span>脚本文件和Cookies</span>应用程序处理和计算时产生的垃圾</dd>
+    					</dl>
+    					<p class="number">0</p>
+    					<p class="size">0B</p>
+    				</li>
+    				<li class="lineCook">
+    					<input type="checkbox" />
+    					<dl>
+    						<dt></dt>
+    						<dd><span>离线文件和缓存</span>应用程序处理和计算时产生的垃圾</dd>
+    					</dl>
+    					<p class="number">0</p>
+    					<p class="size">0B</p>
+    				</li>
+    				<li class="installCook">
+    					<input type="checkbox" />
+    					<dl>
+    						<dt></dt>
+    						<dd><span>安装程序缓存</span>应用程序处理和计算时产生的垃圾</dd>
+    					</dl>
+    					<p class="number">0</p>
+    					<p class="size">0B</p>
+    				</li>
+    			</ul>
+    		</div>
+    		
+    	</div>
+        	
+    </div>
+</div>
+
+<script>
+    require('home:detail.view')();
+//    console.log('sub dialog');
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<div class="application-toolbar toolbar">
+    {{> toolbar}} {{! toolbar.mustache }}
+</div>
+<div class="application-content tab-with-grid">
+    <ul class="tab-nav">
+        <li class="active"><a href="#" data-toggle="tab" data-target=".tab-local-apps" class="local-apps">{{i18n "application.all_apps"}} (<em class="num">0</em>)</a></li>
+        <li><a href="#" data-toggle="tab" data-target=".tab-update-apps" class="update-apps">{{i18n "application.update"}} (<em class="num">0</em>)</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane tab-local-apps tab-pane-animate-left active"></div>
+        <div class="tab-pane tab-update-apps tab-pane-animate-right"></div>
+    </div>
+</div>

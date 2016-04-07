@@ -1,0 +1,57 @@
+.i-must-have{
+  .must-have-app{
+    margin-bottom: 30px;
+    height: 145px;
+  }
+  .must-have-game{
+    height: 145px;
+  }
+  .must-have-app-list,.must-have-game-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    margin-right: -34px;
+  }
+  /*must have单个元素*/
+  .must-have-app-item{
+    float: left;
+    margin-right: 32px;
+    &:hover{
+      .app-download{
+        border:1px solid #d5d5d5;
+        background: #fbfbfb;
+        .app-title{
+          display: none;
+        }
+        .down-title{
+          display: inline;
+        }
+      }
+
+    }
+    .app-icon-wrap{
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 7px;
+    }
+    .app-download{
+      width: 80px;
+      height: 26px;
+      display: block;
+      line-height: 26px;
+      text-align: center;
+      box-sizing: border-box;
+      background: none;
+      overflow: hidden;
+      color: #666;
+      border:1px solid transparent;
+      text-decoration: none;
+      .down-title{
+        display: none;
+      }
+    }
+  }
+}

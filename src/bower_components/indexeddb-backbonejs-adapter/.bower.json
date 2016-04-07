@@ -1,0 +1,14 @@
+{
+  "name": "indexeddb-backbonejs-adapter",
+  "homepage": "https://github.com/superfeedr/indexeddb-backbonejs-adapter",
+  "_release": "458e906065",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "458e906065bf8a4c8b02bddc15892eb4296f2ffb"
+  },
+  "_source": "git://github.com/superfeedr/indexeddb-backbonejs-adapter.git",
+  "_target": "*",
+  "_originalSource": "indexeddb-backbonejs-adapter",
+  "_direct": true
+}

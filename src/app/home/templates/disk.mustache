@@ -1,0 +1,56 @@
+{{#if dataTotal}}
+    <p>Data Capacity ({{dataTotalSize}}, {{dataAvailableSize}} Available):</p>
+    <ul data-type="data" class="data-capacity capacity">
+        {{#if application}}
+            <li style="width:{{application}}" >
+                <a draggable="false" data-key="application" class="application" href="#">application</a>
+            </li>
+        {{/if}}
+        {{#if picture}}
+            <li style="width:{{picture}}" >
+                <a draggable="false" data-key="picture" class="picture" href="#">picture</a>
+            </li>
+        {{/if}}
+        {{#if music}}
+            <li style="width:{{music}}" >
+                <a draggable="false" data-key="music"  class="music" href="#">music</a>
+            </li>
+        {{/if}}
+        {{#if books}}
+            <li style="width:{{books}}">
+                <a draggable="false" data-key="books" class="books" href="#">books</a>
+            </li>
+        {{/if}}
+        {{#if others}}
+            <li style="width:{{others}}">
+                <a draggable="false" data-key="others" class="others"  href="#">others</a>
+            </li>
+        {{/if}}
+        {{#if dataAvailable}}
+            <li style="width:{{dataAvailable}}">
+                <a draggable="false" data-key="dataAvailable" class="available"  href="#">dataAvailable</a>
+            </li>
+        {{/if}}
+    </ul>
+{{/if}}
+{{#if systemTotal}}
+    <p>System Capacity ({{systemTotalSize}}, {{systemAvailableSize}} Available):</p>
+    <ul data-type="system" class="system-capacity capacity">
+        {{#if systemUseage}}
+            <li  style="width:{{systemUseage}}">
+                <a draggable="false" data-key="systemUseage" class="system-useage" href="#">systemUseage</a>
+            </li>
+        {{/if}}
+        {{#if systemAvailable}}
+            <li style="width:{{systemAvailable}}">
+                <a draggable="false" data-key="systemAvailable" data-placement="left" class="available"  href="#">systemAvailable</a>
+            </li>
+        {{/if}}
+    </ul>
+{{/if}}
+
+
+<div class="tooltip top" role="tooltip">
+  <div class="tooltip-arrow"></div>
+  <div class="tooltip-inner"></div>
+</div>

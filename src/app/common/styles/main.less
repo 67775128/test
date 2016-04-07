@@ -1,0 +1,76 @@
+/*@require bootstrap.less*/
+/*@require animate.css*/
+/*@require hint.css*/
+
+body{
+  font-family: "Helvetica","Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
+}
+*:not(input),*:not(textarea){
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/*Custom Scrollbar*/
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  -webkit-appearance: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track:hover,
+::-webkit-scrollbar-track:active {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.05)
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #C7C7C7;
+  min-height: 30px;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0);
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #b0b0b0;
+  border: 2px solid rgba(255, 255, 255, 0);
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: #969696;
+}
+
+/*input checkbox custom*/
+input[type="checkbox"]{
+  margin: 0;
+  border: 1px #bbc0c3 solid;
+  background-color: #fff;
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  outline: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 1px;
+}
+
+input[type="checkbox"]:enabled:hover,
+input[type="radio"]:enabled:hover{
+  border-color: #3569d3;
+  -webkit-appearance: none;
+}
+
+input[type="checkbox"]:enabled:checked {
+  background: #2755b3 url(../images/check.png?__sprite) no-repeat center;
+  -webkit-appearance: none;
+  border-color: #2755b3;
+}

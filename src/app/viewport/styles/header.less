@@ -1,0 +1,55 @@
+.i-header{
+  @toolbar-height: 30px;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  height: 48px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: rgba(242, 242, 242,0.4);
+  z-index: 1046;
+  .i-toolbar{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 12px;
+    top:9px;
+    height: @toolbar-height;
+    line-height: @toolbar-height;
+    a{
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      i{
+        top:6px;
+        left: 7px;
+      }
+      &.toolbar-restore{
+        display: none;
+      }
+    }
+  }
+  .i-btn-repair{
+    position: absolute;
+    right:120px;
+    top:7px;
+    background: #2755b5;
+    font-weight: normal;
+    border-radius: 1px;
+    padding: 4px 12px;
+  }
+  .i-history{
+    position: absolute;
+    top: 12px;
+    left: 200px;
+    a{
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      i{
+        top:6px;
+        left: 7px;
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html debug="true">
+<head>
+    <meta charset="UTF-8">
+    <title>Mobogenie IOS</title>
+
+    <!--STYLE_PLACEHOLDER-->
+
+</head>
+<body>
+<div id="viewport" class="i-viewport">
+    <div class="i-content"></div>
+    <div class="i-sidebar"></div>
+    <div class="i-header"></div>
+</div>
+<!--@require init-->
+<!--@require common:libs/MGWindow-->
+<script type="text/javascript" src="../bower_components/requirejs/require.js"></script>
+
+
+<script type="text/javascript">
+    requirejs.jsExtRegExp = /^\/|:\/\/|\?/;
+    require.config({
+        urlArgs: "bust=" + (new Date()).getTime()
+    });
+    function checkWnd(){
+        if(!MGWebKit.wnd){
+            MGWebKit.wnd = new MGWindow();
+        }
+    }
+    function init(){
+        checkWnd();
+        require(['init'],function(init){
+            init();
+        });
+    }
+    if(window.MGWebKit){
+        checkWnd();
+        MGWebKit.wnd.onLoad = function(){
+            var wnd = MGWebKit.wnd;
+            // 设置窗口大小和位置
+            wnd.x = 100;
+            wnd.y = 100;
+            wnd.cx = 980;
+            wnd.cy = 720;
+            wnd.title = 'iGenie';
+            wnd.show(MGWndStatus.center);
+            init();
+        };
+    }
+    else{
+        require(['common:libs/MGWindow','handlebars'],function(MGWindowModule,handlebars){
+            window.Handlebars = handlebars;
+            window.MGWebKit = {};
+            window.MGWindow = MGWindowModule.MGWindow;
+            init();
+        });
+    }
+</script>
+</body>
+</html>

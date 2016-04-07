@@ -1,0 +1,111 @@
+.dialog-open {
+  overflow: hidden;
+  .i-viewport{
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transition: 0.3s all ease-out;
+    transition: 0.3s all ease-out;
+    -webkit-transform: scale(0.99);
+    transform: scale(0.99);
+    overflow: hidden;
+    -webkit-filter: blur(1px);
+    filter: blur(1px);
+  }
+}
+
+.dialog {
+  display: none;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+}
+.dialog-open .dialog {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+
+// Actual modal
+.modal-content {
+  position: relative;
+  background-color: #fbfbfb;
+  border: 1px solid #2755b4;
+  border-radius: 2px;
+  background-clip: padding-box;
+  outline: 0;
+  box-shadow: 0 1px 4px lighten(#2755b4,20%);
+}
+.modal-header{
+  background: #2755b4;
+  height: 36px;
+  padding: 0;
+}
+.modal-body{
+  padding: 30px;
+}
+.modal-title {
+  margin: 0;
+  line-height: 36px;
+  padding-left: 10px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  cursor: move;
+}
+.dialog-show{
+  display: block;
+  -webkit-animation-duration: 300ms;
+  animation-duration: 300ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
+}
+.dialog-hide{
+  -webkit-animation-duration: 200ms;
+  animation-duration: 200ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: zoomOut;
+  animation-name: zoomOut;
+}
+
+
+// theme
+.dialog-simple{
+  .modal-dialog{
+    width: 380px;
+    height: 216px;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top:0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+}
+.dialog-large{
+  .modal-dialog{
+    position: absolute;
+    left: 0;
+    top:0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    box-sizing: border-box;
+    width: 602px;
+    height: 444px;
+  }
+}

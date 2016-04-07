@@ -1,0 +1,16 @@
+<table class="device-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each info}}
+            <tr>
+                <td>{{@key}}</td>{{!Key}}
+                <td>{{this}}</td>{{!Value}}
+            </tr>
+        {{/each}}
+    </tbody>
+</table>

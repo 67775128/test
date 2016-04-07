@@ -1,0 +1,210 @@
+//
+// icons for Bootstrap
+//
+// Since icons are fonts, they can be placed anywhere text is placed and are
+// thus automatically sized to match the surrounding child. To use, create an
+// inline element with the appropriate classes, like so:
+//
+// <a href="#"><span class="icon icon-star"></span> Star</a>
+.icon(@imageName, @bgPosition : 0 0){
+  background-image: url("../icons/@{imageName}.png?__sprite");
+  background-position: @bgPosition;
+  a.disabled &,
+  a.disabled:hover &,
+  a.disabled:active &{
+    background-image: url("../icons/@{imageName}.png?__sprite");
+    background-position: @bgPosition;
+  }
+}
+
+.icon-hover(@imageName, @bgPosition: 0 0){
+  a.hover &,a:hover &{
+      background-image: url("../icons/@{imageName}.png?__sprite");
+      background-position: @bgPosition;
+  }
+  &-hover,&.hover{
+    background-image: url("../icons/@{imageName}.png?__sprite");
+    background-position: @bgPosition;
+  }
+}
+
+.icon-active(@imageName, @bgPosition: 0 0){
+  a.active &,a:active &{
+      background-image: url("../icons/@{imageName}.png?__sprite");
+      background-position: @bgPosition;
+  }
+  &-active,&.active{
+    background-image: url("../icons/@{imageName}.png?__sprite");
+    background-position: @bgPosition;
+  }
+}
+.icon-with-active(@imageName, @bgPosition : 0 0){
+  .icon(@imageName,@bgPosition);
+  .icon-hover("@{imageName}-active",@bgPosition);
+  .icon-active("@{imageName}-active",@bgPosition);
+}
+.icon-with-hover-active(@imageName, @bgPosition : 0 0){
+  .icon(@imageName,@bgPosition);
+  .icon-hover("@{imageName}-hover",@bgPosition);
+  .icon-active("@{imageName}-active",@bgPosition);
+}
+
+// Catchall baseclass
+.icon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  line-height: 1;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+// Small Icon
+.icon-small{
+  width: 12px;
+  height: 12px;
+}
+// Middle Icon
+.icon-middle{
+  width: 16px;
+  height: 16px;
+}
+// Large Icon
+.icon-large{
+  width: 26px;
+  height: 26px;
+}
+
+.icon-home{
+
+}
+// 返回
+.icon-back{
+  .icon-with-hover-active(back);
+}
+// checkbox的选中样式
+.icon-check{
+  .icon(check);
+}
+// 关闭
+.icon-close{
+  .icon-with-hover-active(close);
+}
+// 继续
+.icon-continue{
+  .icon-with-hover-active(continue);
+}
+// 对话框
+.icon-dialog{
+  .icon(dialog);
+  .icon-hover(dialog-hover);
+  .icon-active(dialog-active,1px 0);
+}
+// 下载小样式
+.icon-down-small{
+  .icon-with-hover-active(down-small);
+}
+// 下载大样式
+.icon-down{
+  .icon-with-active(down,0 2px);
+}
+// 退出
+.icon-exit{
+  .icon(exit,1px 1px);
+  .icon-hover(exit-hover,1px 1px);
+  .icon-active(exit-active,2px 2px);
+}
+// 导出
+.icon-export{
+  .icon-with-hover-active(export);
+}
+// 文件小
+.icon-folder-small{
+  .icon-with-hover-active(folder-small);
+}
+// 文件
+.icon-folder{
+  .icon-with-active(folder,0 3px);
+}
+// 前进
+.icon-forward{
+  .icon-with-hover-active(forward);
+}
+// 资源
+.icon-genie{
+  .icon-with-active(genie,0 2px);
+}
+// 首页
+.icon-home{
+  .icon-with-active(home);
+}
+// 越狱
+.icon-jailbeak{
+  .icon-with-active(jailbeak,0 2px);
+}
+// 闪电
+.icon-lightning{
+  .icon(lightning);
+}
+// 最大化
+.icon-max{
+  .icon(max,1px 1px);
+  .icon-hover(max-hover,1px 1px);
+  .icon-active(max-active,1px 1px);
+}
+// 菜单
+.icon-menu{
+  .icon(menu,1px 1px);
+  .icon-hover(menu-hover,1px 1px);
+  .icon-active(menu-active,2px 2px);
+}
+// 最小化
+.icon-min{
+  .icon(min,1px 5px);
+  .icon-hover(min-hover,1px 5px);
+  .icon-active(min-active,2px 5px);
+}
+// 暂停
+.icon-pause{
+  .icon-with-hover-active(pause);
+}
+// 铅笔
+.icon-pen{
+  .icon-with-hover-active(pen);
+}
+// 刷新
+.icon-refresh{
+  .icon-with-hover-active(refresh);
+}
+// 还原
+.icon-restore{
+  .icon(restore,1px 1px);
+  .icon-hover(restore-hover,1px 1px);
+  .icon-active(restore-active,2px 2px);
+}
+// 删除
+.icon-trash{
+  .icon-with-hover-active(trash);
+}
+// 上传
+.icon-up{
+  .icon-with-hover-active(up);
+}
+// 检索
+.icon-search{
+  .icon(search);
+  height: 15px;
+}
+// 检索
+.icon-left{
+  .icon-with-active(left);
+  margin-left: 8px;
+  margin-top: 6px;
+}
+// 检索
+.icon-right{
+  .icon-with-active(right);
+  margin-left: 10px;
+  margin-top: 6px;
+}
+
+

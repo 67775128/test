@@ -1,0 +1,63 @@
+//
+// Buttons
+// --------------------------------------------------
+
+
+// 基本样式
+// --------------------------------------------------
+
+// 设置button样式
+.btn-color-variant(@color,@background,@border){
+  color: @color;
+  background-color: @background;
+  border-color: @border;
+}
+// 默认样式
+.btn-default-variant(@color,@background,@border){
+  .btn-color-variant(@color,@background,@border);
+}
+// 移入样式
+.btn-hover-variant(@color,@background,@border){
+  &:hover,
+  &:focus,
+  &.focus{
+    .btn-color-variant(@color,@background,@border);
+  }
+}
+// 激活样式
+.btn-active-variant(@color,@background,@border){
+  &:active,
+  &.active{
+    .btn-color-variant(@color,@background,@border);
+  }
+}
+// 禁用样式
+.btn-disable-variant(@color,@background,@border){
+  &.disable,
+  &[disable]{
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active{
+      .btn-color-variant(@color,@background,@border);
+    }
+  }
+}
+
+// button的样式设置
+.button-variant(@color; @background; @border){
+  .btn-default-variant(@color,@background,@border);
+  .btn-hover-variant(@color,lighten(@background,10%),lighten(@border,10%));
+  .btn-active-variant(@color,darken(@background,6%),darken(@background,6%));
+  .btn-disable-variant(@color,@background,@border);
+}
+
+// 盒子模型
+// ----------------------------------
+.button-size(@padding-vertical;@padding-horizontal;@font-size;@line-height;@border-radius){
+  padding: @padding-vertical @padding-horizontal;
+  font-size: @font-size;
+  line-height: @line-height;
+  border-radius: @border-radius;
+}

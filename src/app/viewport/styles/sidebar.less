@@ -1,0 +1,81 @@
+// Variables
+// ================================
+@sidebar-item-height : 48px;
+@sidebar-text-ident : 54px;
+@sidebar-bgColor : #f4f6f7;
+@sidebar-border-color : rgba(0, 0, 0,0.15);
+@sidebar-active-bgColor : #2755b4;
+@sidebar-active-color : #fff;
+
+
+.i-sidebar{
+  background-color: @sidebar-bgColor;
+  border-right: 1px solid @sidebar-border-color;
+  width: 180px;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 1080;
+  height: 100%;
+  h1{
+    background: url('../images/genie-icon-28.png') 18px 10px no-repeat scroll;
+    margin: 0;
+    color: #818181;
+    font-size: 14px;
+    height: @sidebar-item-height;
+    line-height: @sidebar-item-height;
+    text-indent: @sidebar-text-ident;
+  }
+  ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li{
+      border-bottom: 1px solid #e9e9ea;
+      a{
+        color: @sidebar-active-bgColor;
+        display: block;
+        font-size: 14px;
+        position: relative;
+        border-bottom: 1px solid #f9fafa;
+        height: @sidebar-item-height;
+        line-height: @sidebar-item-height;
+        text-indent: @sidebar-text-ident;
+        text-decoration: none;
+        &:hover{
+          background-color: lighten(@sidebar-active-bgColor,20%);
+          color: @sidebar-active-color;
+        }
+        &.active{
+          background-color: @sidebar-active-bgColor;
+          color: @sidebar-active-color;
+        }
+        .icon{
+          position: absolute;
+          left: 20px;
+          top:10px;
+        }
+        &.sidebar-task{
+          position: relative;
+        }
+        .task-count{
+          display: none;
+          color:#ff1b1f;
+          font-style: normal;
+          margin-left: 10px;
+        }
+        .task-status{
+          position: absolute;
+          display: none;
+          width: 10px;
+          height: 10px;
+          background: #da1515;
+          top:10px;
+          right:36px;
+          border-radius: 100%;
+        }
+
+      }
+    }
+  }
+}

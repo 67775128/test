@@ -1,0 +1,54 @@
+.application-toolbar{
+  // Themes
+  // ======================
+  @toolbar-bgColor : #fefefe;
+  @font-color : #444750;
+
+  // Size
+  // =======================
+  @toolbar-height : 30px;
+  @font-size : 12px;
+
+  background-color: @toolbar-bgColor;
+  padding-left: 20px;
+  padding-top: 2px;
+  ul{
+    list-style: none;
+    margin: 0;
+    height: @toolbar-height;
+    padding: 0;
+    li{
+      float: left;
+      margin-right: 20px;
+    }
+    input{
+      margin-top: 7px;
+    }
+    a{
+      color: @font-color;
+      font-size: @font-size;
+      display: block;
+      text-decoration: none;
+      height: 30px;
+      line-height: 30px;
+      &:hover{
+        color: #2755b4;
+      }
+      &:active{
+        color: #214899;
+      }
+      &.disabled{
+        opacity: 0.3;
+        color: @font-color;
+        cursor:default;
+      }
+      i{
+        background-repeat: no-repeat;
+        display: inline-block;
+        position: relative;
+        top: 2px;
+        margin-right: 10px;
+      }
+    }
+  }
+}

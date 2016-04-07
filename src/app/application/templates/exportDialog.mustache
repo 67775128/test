@@ -1,0 +1,18 @@
+<div class="i-app-export-dialog">
+    {{#start}}
+        <p class="tip">{{header}}</p>
+        <p class="title">{{title}}</p>
+        <div class="process-wrap"></div>
+        <a data-dismiss="dialog" class="btn btn-light">Cancel</a>
+    {{/start}}
+    {{#success}}
+        <p class="success">{{title}}</p>
+        <a data-dismiss="dialog" class="btn btn-light">Cancel</a>
+        <a class="btn btn-light open-folder">Open Folder</a>
+    {{/success}}
+    {{#failed}}
+        <p class="failed title">{{title}}</p>
+        <div class="failedInfo"></div>
+        <a data-dismiss="dialog" class="btn btn-light">Cancel</a>
+    {{/failed}}    
+</div>

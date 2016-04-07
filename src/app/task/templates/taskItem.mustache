@@ -1,0 +1,41 @@
+<div class="base-info hint--bottom" >
+    <div class="icon" ></div>{{!图片}}
+    <h3 class="name" ></h3>{{!app名字}}
+</div>
+<span class="size hint--left" data-hint="Size"></span>{{!app fileSize}}
+{{!下载进度}}
+<div class="progress-wrap progress-download hide">
+    <div class="progress">
+        <div class="progress-bar" role="progressbar"  >
+            <span class="sr-only"></span>
+        </div>
+    </div>
+    <div class="progress-tip"></div>
+</div>
+{{!安装进度}}
+<div class="progress-wrap progress-install hide">
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" >
+            <span class="sr-only"></span>
+        </div>
+    </div>
+    <div class="progress-tip"></div>
+</div>
+{{!完成时间提示}}
+<div class="complete-tip hide"></div>
+{{!下载控制板}}
+<div class="action action-download hide">
+    <a class="btn btn-simple pause hide" href="#">pause</a>{{!暂停}}
+    <a class="btn btn-simple continue hide" href="#">Continue</a>{{!继续}}
+    <a class="btn btn-warn retry hide" href="#">Retry</a>{{!重试}}
+</div>
+{{!安装控制板}}
+<div class="action action-install hide">
+    <a class="btn btn-simple pause hide" href="#">pause</a>{{!暂停}}
+    <a class="btn btn-simple continue hide" href="#">Continue</a>{{!继续}}
+    <a class="btn btn-warn retry hide" href="#">Retry</a>{{!重试}}
+</div>
+{{!完成控制板}}
+<div class="action action-complete hide">
+    <a class="btn btn-simple retry js-reInstall" href="#">ReInstall</a>{{!重新}}
+</div>
